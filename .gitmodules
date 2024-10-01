@@ -1,0 +1,3 @@
+[submodule "Flarum.Sdk"]
+	path = Flarum.Sdk
+	url = https://github.com/zhh135/Flarum.Sdk.git
