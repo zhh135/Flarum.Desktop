@@ -3,6 +3,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using System;
+using Windows.UI.Xaml;
 
 namespace Flarum.Uwp.Services
 {
@@ -20,24 +21,15 @@ namespace Flarum.Uwp.Services
             {
                 return _frame;
             }
-
-
         }
 
+        
         public bool CanGoBack => Frame != null && Frame.CanGoBack;
+
 
         public NavigationService(IPageService pageService)
         {
             _pageService = pageService;
-        }
-
-        public void RegisterFrameEvents(Frame frame)
-        {
-            _frame = frame;
-            if (_frame != null)
-            {
-                _frame.Navigated += OnNavigated;
-            }
         }
 
         public void UnregisterFrameEvents()
@@ -59,26 +51,6 @@ namespace Flarum.Uwp.Services
             return false;
         }
 
-        public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
-        {
-            var pageType = _pageService.GetPageType(pageKey);
-
-            if (_frame != null && (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed))))
-            {
-                _frame.Tag = clearNavigation;
-                var navigated = _frame.Navigate(pageType, parameter);
-                if (navigated)
-                {
-                    _lastParameterUsed = parameter;
-
-                }
-
-                return navigated;
-            }
-
-            return false;
-        }
-
         private void OnNavigated(object sender, NavigationEventArgs e)
         {
             if (sender is Frame frame)
@@ -92,5 +64,38 @@ namespace Flarum.Uwp.Services
                 Navigated?.Invoke(sender, e);
             }
         }
+
+        public bool NavigateTo(string pageKey, object parameter = null, bool clearNavigation = false)
+        {
+            var pageType = _pageService.GetPageType(pageKey);
+
+            var frame = Frame;
+            
+
+            if (frame != null && (frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed))))
+            {
+                frame.Tag = clearNavigation;
+                var navigated = frame.Navigate(pageType, parameter);
+                if (navigated)
+                {
+                    _lastParameterUsed = parameter;
+
+                }
+                return navigated;
+            }
+
+            return false;
+        }
+
+        public void RegisterFrameEvents(Frame frame)
+        {
+            _frame = frame;
+
+            if (_frame != null)
+            {
+                _frame.Navigated += OnNavigated;
+            }
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Flarum.Uwp.Contracts.Services;
+﻿using Flarum.Provider;
+using Flarum.Uwp.Contracts.Services;
 using Flarum.Uwp.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -31,6 +32,7 @@ public class Locator
         _servicesCollection.AddTransient<INavigationService, NavigationService>();
         _servicesCollection.AddTransient<INavigationViewService, NavigationViewService>();
         _servicesCollection.AddTransient<IPageService, PageService>();
+        _servicesCollection.AddSingleton<FlarumProvider>();
         _services = _servicesCollection.BuildServiceProvider();
 
     }

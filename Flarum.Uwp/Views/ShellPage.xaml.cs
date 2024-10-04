@@ -1,4 +1,5 @@
-﻿using Flarum.Uwp.ViewModels;
+﻿using Flarum.Uwp.Contracts.Services;
+using Flarum.Uwp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,6 +32,15 @@ namespace Flarum.Uwp.Views
 
             ViewModel = new ShellViewModel();
             DataContext = ViewModel;
+        }
+        
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            Locator.Instance.GetService<INavigationService>().RegisterFrameEvents(ContentFrame);
+            Locator.Instance.GetService<INavigationViewService>().Initialize(NavView);
+
         }
     }
 }
