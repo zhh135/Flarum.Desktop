@@ -123,6 +123,12 @@
     <Compile Include="Contracts\Services\INavigationService.cs" />
     <Compile Include="Contracts\Services\INavigationViewService.cs" />
     <Compile Include="Contracts\Services\IPageService.cs" />
+    <Compile Include="Controls\HtmlViewer\HtmlViewer.cs" />
+    <Compile Include="Controls\HtmlViewer\HtmlViewer.Events.cs" />
+    <Compile Include="Controls\HtmlViewer\HtmlViewer.Gestures.cs" />
+    <Compile Include="Controls\HtmlViewer\HtmlViewer.Members.cs" />
+    <Compile Include="Controls\HtmlViewer\HtmlViewer.Navigation.cs" />
+    <Compile Include="Controls\HtmlViewer\HtmlViewer.Resize.cs" />
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Locator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,6 +146,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controls\HtmlViewer\HtmlViewerScript.js" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -170,6 +177,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\HtmlViewer\HtmlViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Styles\NavigationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

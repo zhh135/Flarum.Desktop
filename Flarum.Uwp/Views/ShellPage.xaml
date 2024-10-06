@@ -12,8 +12,15 @@
 
     <Grid>
         <Grid x:Name="ContentArea">
-            <Border>
-                <TextBlock Text="{x:Bind ViewModel.CurrentForum.Title}"></TextBlock>
+            <Border
+                Height="48"
+                Margin="48,0,0,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{ThemeResource CaptionTextBlockStyle}"
+                    Text="{x:Bind ViewModel.Title}" />
             </Border>
             <muxc:NavigationView x:Name="NavView" x:Uid="NavView">
                 <muxc:NavigationView.MenuItems>

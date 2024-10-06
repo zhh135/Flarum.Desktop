@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -30,17 +31,18 @@ namespace Flarum.Uwp.Views
         {
             InitializeComponent();
 
-            ViewModel = new ShellViewModel();
+            ViewModel = new ShellViewModel(App.CurrentProvider);
             DataContext = ViewModel;
-        }
-        
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
 
+            
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
             Locator.Instance.GetService<INavigationService>().RegisterFrameEvents(ContentFrame);
             Locator.Instance.GetService<INavigationViewService>().Initialize(NavView);
-
+            ViewModel.GetData();
         }
     }
 }
