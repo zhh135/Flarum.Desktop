@@ -1,4 +1,5 @@
-﻿using Flarum.Uwp.Contracts.Services;
+﻿using AsyncAwaitBestPractices;
+using Flarum.Uwp.Contracts.Services;
 using Flarum.Uwp.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace Flarum.Uwp.Views
     public sealed partial class ShellPage : Page
     {
         private ShellViewModel ViewModel { get;}
+        
+
 
         public ShellPage()
         {
@@ -34,15 +37,25 @@ namespace Flarum.Uwp.Views
             ViewModel = new ShellViewModel(App.CurrentProvider);
             DataContext = ViewModel;
 
-            
+            Loaded += ShellPage_Loaded;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private async void ShellPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            await ViewModel.GetDataAsync();
+            ViewModel.GetDataAsync().SafeFireAndForget();
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            
+            ViewModel.GetDataAsync().SafeFireAndForget();
+
             Locator.Instance.GetService<INavigationService>().RegisterFrameEvents(ContentFrame);
             Locator.Instance.GetService<INavigationViewService>().Initialize(NavView);
-            ViewModel.GetData();
         }
+
+
     }
 }

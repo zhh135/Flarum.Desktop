@@ -20,7 +20,7 @@
                 <TextBlock
                     VerticalAlignment="Center"
                     Style="{ThemeResource CaptionTextBlockStyle}"
-                    Text="{x:Bind ViewModel.Title}" />
+                    Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
             </Border>
             <muxc:NavigationView x:Name="NavView" x:Uid="NavView">
                 <muxc:NavigationView.MenuItems>

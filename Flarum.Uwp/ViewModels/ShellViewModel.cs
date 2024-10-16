@@ -25,14 +25,21 @@ namespace Flarum.Uwp.ViewModels
             this.flarumProvider = flarumProvider;
         }
 
-        public async void GetData()
+        public async Task GetDataAsync()
         {
             flarumProvider.Option.Url = "https://community.wvbtech.com";
             CurrentForum = await flarumProvider.GetFlarumForumAsync();
 
-            Title = CurrentForum.Title;
-            IconUrl = CurrentForum.FaviconUrl;
-            
+            if (CurrentForum.Title is not null)
+            {
+                Title = CurrentForum.Title;
+                IconUrl = CurrentForum.FaviconUrl;
+            }
+            else
+            {
+                Title = "Flarent";
+                IconUrl = "";
+            }  
         }
     }
 }
