@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Flarum.Api.Bases;
 using System.Diagnostics;
+using Windows.ApplicationModel;
 
 namespace Flarum.Uwp.ViewModels
 {
@@ -18,7 +19,7 @@ namespace Flarum.Uwp.ViewModels
 
         [ObservableProperty] private FlarumForum _currentForum;
         [ObservableProperty] private string _title;
-        [ObservableProperty] private string _iconUrl;
+        [ObservableProperty] private Uri _iconUrl;
 
         public ShellViewModel(FlarumProvider flarumProvider)
         {
@@ -27,19 +28,14 @@ namespace Flarum.Uwp.ViewModels
 
         public async Task GetDataAsync()
         {
-            flarumProvider.Option.Url = "https://community.wvbtech.com";
+            flarumProvider.Option.Url = "https://discuss.flarum.org.cn";
             CurrentForum = await flarumProvider.GetFlarumForumAsync();
 
-            if (CurrentForum.Title is not null)
-            {
-                Title = CurrentForum.Title;
-                IconUrl = CurrentForum.FaviconUrl;
-            }
-            else
-            {
-                Title = "Flarent";
-                IconUrl = "";
-            }  
+            if (CurrentForum.Title != null) Title = CurrentForum.Title;
+            else Title = Package.Current.DisplayName;
+
+            if (CurrentForum.FaviconUrl != null) IconUrl = new Uri(CurrentForum.FaviconUrl);
+            else IconUrl = new Uri("ms-appx:///Assets/StoreLogo.png");
         }
     }
 }

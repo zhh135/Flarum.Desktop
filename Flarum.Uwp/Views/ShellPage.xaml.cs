@@ -7,8 +7,11 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,7 +30,8 @@ namespace Flarum.Uwp.Views
     public sealed partial class ShellPage : Page
     {
         private ShellViewModel ViewModel { get;}
-        
+        private ApplicationViewTitleBar TitleBar { get; }
+        private CoreApplicationViewTitleBar CoreTitleBar { get; }
 
 
         public ShellPage()
@@ -38,6 +42,18 @@ namespace Flarum.Uwp.Views
             DataContext = ViewModel;
 
             Loaded += ShellPage_Loaded;
+
+            TitleBar = ApplicationView.GetForCurrentView().TitleBar;
+            CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+
+            TitleBar.BackgroundColor = Colors.Transparent;
+            TitleBar.ButtonBackgroundColor = Colors.Transparent;
+            TitleBar.ButtonHoverBackgroundColor = Colors.Transparent;
+            TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            TitleBar.ButtonPressedBackgroundColor = Colors.Transparent;
+
+            CoreTitleBar.ExtendViewIntoTitleBar = true;
+            Window.Current.SetTitleBar(TitleDragArea);
         }
 
         private async void ShellPage_Loaded(object sender, RoutedEventArgs e)

@@ -129,4 +129,10 @@
   <data name="CreateNewPost.Content" xml:space="preserve">
     <value>新建</value>
   </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Flarent</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>一个第三方Flarum客户端</value>
+  </data>
 </root>
