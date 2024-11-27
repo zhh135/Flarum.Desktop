@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using System;
 using Windows.UI.Xaml;
+using System.Diagnostics;
 
 namespace Flarum.Uwp.Services
 {
@@ -15,16 +16,7 @@ namespace Flarum.Uwp.Services
 
         public event NavigatedEventHandler? Navigated;
 
-        public Frame? Frame
-        {
-            get
-            {
-                return _frame;
-            }
-        }
-
-        
-        public bool CanGoBack => Frame != null && Frame.CanGoBack;
+        public bool CanGoBack => _frame != null && _frame.CanGoBack;
 
 
         public NavigationService(IPageService pageService)
@@ -69,7 +61,7 @@ namespace Flarum.Uwp.Services
         {
             var pageType = _pageService.GetPageType(pageKey);
 
-            var frame = Frame;
+            var frame = _frame;
             
 
             if (frame != null && (frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed))))
@@ -94,6 +86,10 @@ namespace Flarum.Uwp.Services
             if (_frame != null)
             {
                 _frame.Navigated += OnNavigated;
+            }
+            else
+            {
+                Debug.WriteLine("The content frame is null");
             }
         }
 

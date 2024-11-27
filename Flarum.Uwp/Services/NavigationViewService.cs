@@ -8,6 +8,7 @@ using System.Linq;
 using Flarum.Uwp.Contracts.Services;
 using Flarum.Uwp.Helpers;
 using System.Reflection.Metadata.Ecma335;
+using System.Diagnostics;
 
 namespace Flarum.Uwp.Services;
 
@@ -62,7 +63,8 @@ public class NavigationViewService : INavigationViewService
     {
         if (args.IsSettingsInvoked)
         {
-            _navigationService.NavigateTo("SettingsPage");
+            var abab =  _navigationService.NavigateTo("SettingsPage");
+            if (abab) Debug.WriteLine("Settings Page is navigated!");
         }
         else
         {
@@ -72,6 +74,8 @@ public class NavigationViewService : INavigationViewService
             {
                 _navigationService.NavigateTo(pageKey);
             }
+
+            Debug.WriteLine("Navigate!");
         }
     }
 

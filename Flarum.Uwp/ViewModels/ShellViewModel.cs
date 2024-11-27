@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Flarum.Api.Bases;
 using System.Diagnostics;
 using Windows.ApplicationModel;
+using Windows.UI.Xaml.Media;
 
 namespace Flarum.Uwp.ViewModels
 {
@@ -21,21 +22,21 @@ namespace Flarum.Uwp.ViewModels
         [ObservableProperty] private string _title;
         [ObservableProperty] private Uri _iconUrl;
 
-        public ShellViewModel(FlarumProvider flarumProvider)
+        public ShellViewModel()
         {
-            this.flarumProvider = flarumProvider;
+            this.flarumProvider = Locator.Instance.GetService<FlarumProvider>();
         }
 
         public async Task GetDataAsync()
         {
-            flarumProvider.Option.Url = "https://discuss.flarum.org.cn";
-            CurrentForum = await flarumProvider.GetFlarumForumAsync();
+            CurrentForum = App.CurrentForum;
 
             if (CurrentForum.Title != null) Title = CurrentForum.Title;
             else Title = Package.Current.DisplayName;
-
+            
             if (CurrentForum.FaviconUrl != null) IconUrl = new Uri(CurrentForum.FaviconUrl);
             else IconUrl = new Uri("ms-appx:///Assets/StoreLogo.png");
+            
         }
     }
 }

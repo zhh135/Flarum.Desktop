@@ -38,22 +38,15 @@ namespace Flarum.Uwp.Views
         {
             InitializeComponent();
 
-            ViewModel = new ShellViewModel(App.CurrentProvider);
+            ViewModel = new ShellViewModel();
             DataContext = ViewModel;
 
             Loaded += ShellPage_Loaded;
 
-            TitleBar = ApplicationView.GetForCurrentView().TitleBar;
-            CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-
-            TitleBar.BackgroundColor = Colors.Transparent;
-            TitleBar.ButtonBackgroundColor = Colors.Transparent;
-            TitleBar.ButtonHoverBackgroundColor = Colors.Transparent;
-            TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            TitleBar.ButtonPressedBackgroundColor = Colors.Transparent;
-
-            CoreTitleBar.ExtendViewIntoTitleBar = true;
             Window.Current.SetTitleBar(TitleDragArea);
+
+            Locator.Instance.GetService<INavigationService>().RegisterFrameEvents(ContentFrame);
+            Locator.Instance.GetService<INavigationViewService>().Initialize(NavView);
         }
 
         private async void ShellPage_Loaded(object sender, RoutedEventArgs e)
@@ -64,12 +57,8 @@ namespace Flarum.Uwp.Views
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-            
-            ViewModel.GetDataAsync().SafeFireAndForget();
-
-            Locator.Instance.GetService<INavigationService>().RegisterFrameEvents(ContentFrame);
-            Locator.Instance.GetService<INavigationViewService>().Initialize(NavView);
+            base.OnNavigatedTo(e);    
+            ViewModel.GetDataAsync().SafeFireAndForget();       
         }
 
 

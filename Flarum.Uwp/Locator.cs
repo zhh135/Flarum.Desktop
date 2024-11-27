@@ -29,9 +29,9 @@ public class Locator
     public Locator()
     {
         var _servicesCollection = new ServiceCollection();
-        _servicesCollection.AddTransient<INavigationService, NavigationService>();
-        _servicesCollection.AddTransient<INavigationViewService, NavigationViewService>();
-        _servicesCollection.AddTransient<IPageService, PageService>();
+        _servicesCollection.AddSingleton<INavigationService, NavigationService>();
+        _servicesCollection.AddSingleton<INavigationViewService, NavigationViewService>();
+        _servicesCollection.AddSingleton<IPageService, PageService>();
         _servicesCollection.AddSingleton<FlarumProvider>();
         _services = _servicesCollection.BuildServiceProvider();
 

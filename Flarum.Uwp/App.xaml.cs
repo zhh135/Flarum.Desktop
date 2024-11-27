@@ -1,4 +1,8 @@
 ﻿using Flarum.Provider;
+using Flarum.Provider.Models;
+using Flarum.Uwp.Helpers;
+using Flarum.Uwp.Services;
+using Flarum.Uwp.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,8 +27,11 @@ namespace Flarum.Uwp
     /// </summary>
     sealed partial class App : Application
     {
-        public static FlarumProvider CurrentProvider => _instance ?? (_instance = new FlarumProvider());
+        public static FlarumProvider CurrentProvider => 
+            _instance ?? (_instance = Locator.Instance.GetService<FlarumProvider>());
         private static FlarumProvider _instance;
+
+        public static FlarumForum CurrentForum;
         /// <summary>
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行，
         /// 已执行，逻辑上等同于 main() 或 WinMain()。
@@ -40,7 +47,7 @@ namespace Flarum.Uwp
         /// 将在启动应用程序以打开特定文件等情况下使用。
         /// </summary>
         /// <param name="e">有关启动请求和过程的详细信息。</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -64,14 +71,14 @@ namespace Flarum.Uwp
 
             if (e.PrelaunchActivated == false)
             {
-                if (rootFrame.Content == null)
+                if (e.PreviousExecutionState != ApplicationExecutionState.Running)
                 {
-                    // 当导航堆栈尚未还原时，导航到第一页，
-                    // 并通过将所需信息作为导航参数传入来配置
-                    // 参数
-                    rootFrame.Navigate(typeof(Views.ShellPage), e.Arguments);
+                    bool loadState = (e.PreviousExecutionState == ApplicationExecutionState.Terminated);
+                    SplashScreenPage extendedSplash = new SplashScreenPage(e.SplashScreen, loadState);
+                    Window.Current.Content = extendedSplash;
+                    TitleBarHelper.ExtendContentIntoTitleBar();
                 }
-                // 确保当前窗口处于活动状态
+
                 Window.Current.Activate();
             }
         }

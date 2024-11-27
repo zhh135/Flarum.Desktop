@@ -12,11 +12,6 @@ public interface INavigationService
         get;
     }
 
-    Frame? Frame
-    {
-        get; 
-    }
-
     void RegisterFrameEvents(Frame frame);
 
     void UnregisterFrameEvents();

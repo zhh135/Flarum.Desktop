@@ -14,7 +14,8 @@ namespace Flarum.Uwp.Services
 
         public PageService()
         {
-
+            Configure<HomePage>();
+            Configure<SettingsPage>();
         }
 
         public Type GetPageType(string key)

@@ -6,6 +6,7 @@
     xmlns:local="using:Flarum.Uwp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:helpers="using:Flarum.Uwp.Helpers"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
   
     mc:Ignorable="d">
@@ -48,22 +49,23 @@
                 <muxc:NavigationView.MenuItems>
                     <muxc:NavigationViewItem
                         x:Name="Home"
-                        x:Uid="Home"
-                        Icon="Home" />
+                        x:Uid="Shell_Home"
+                        Icon="Home"
+                        helpers:NavigationHelper.NavigateTo="HomePage"/>
                     <muxc:NavigationViewItem
                         x:Name="Tags"
-                        x:Uid="Tags"
+                        x:Uid="Shell_Tags"
                         Icon="Tag" />
                     <muxc:NavigationViewItem
                         x:Name="Posts"
-                        x:Uid="Posts"
+                        x:Uid="Shell_Posts"
                         Icon="Message" />
                 </muxc:NavigationView.MenuItems>
 
                 <muxc:NavigationView.FooterMenuItems>
                     <muxc:NavigationViewItem
                         x:Name="CreateNewPost"
-                        x:Uid="CreateNewPost"
+                        x:Uid="Shell_CreateNewPost"
                         Icon="Add" />
                     <muxc:NavigationViewItem x:Name="UserItem" Content="未登录">
                         <muxc:NavigationViewItem.Icon>
