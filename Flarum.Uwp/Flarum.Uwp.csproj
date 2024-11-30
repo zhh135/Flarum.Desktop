@@ -125,6 +125,9 @@
     <Compile Include="Contracts\Services\INavigationViewService.cs" />
     <Compile Include="Contracts\Services\IPageService.cs" />
     <Compile Include="Controls\HomePageHeaderImage.xaml.cs" />
+    <Compile Include="Controls\TemplateControls\DiscussionControl.xaml.cs">
+      <DependentUpon>DiscussionControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\NavigationHelper.cs" />
     <Compile Include="Helpers\TitleBarHelper.cs" />
     <Compile Include="Locator.cs" />
@@ -261,6 +264,10 @@
     <Page Include="Controls\HomePageHeaderImage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TemplateControls\DiscussionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\NavigationView.xaml">
       <SubType>Designer</SubType>

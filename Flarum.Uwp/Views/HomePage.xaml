@@ -10,42 +10,49 @@
     mc:Ignorable="d">
 
     <Grid>
-        <controls:HomePageHeaderImage
-            Height="480"
-            VerticalAlignment="Top"
-            Canvas.ZIndex="0" />
-        <Grid Margin="{ThemeResource ContentDefaultMargin}" Canvas.ZIndex="1">
-            <Grid
-                x:Name="HeaderContentArea"
-                Height="480"
-                VerticalAlignment="Top">
-
-                <TextBlock
-                    x:Uid="Home_Title"
-                    Margin="0,40"
-                    HorizontalAlignment="Left"
+        <ScrollViewer>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="480"/>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <controls:HomePageHeaderImage
+                    Height="480"
                     VerticalAlignment="Top"
-                    Style="{ThemeResource TitleTextBlockStyle}" />
-                <StackPanel
-                    Grid.Row="1"
-                    Margin="0,40"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Orientation="Vertical">
-                    <TextBlock
-                        x:Name="WelcomeMessage"
-                        Style="{ThemeResource TitleTextBlockStyle}"
-                        Text="{x:Bind ViewModel.Forum.WelcomeTitle, Mode=OneWay}" />
-                    <TextBlock
-                        x:Name="Description"
-                        Style="{ThemeResource SubtitleTextBlockStyle}"
-                        Text="{x:Bind ViewModel.Forum.Description, Mode=OneWay}" />
-                </StackPanel>
+                    Canvas.ZIndex="0" />
+                <Grid Margin="{ThemeResource ContentDefaultMargin}" Canvas.ZIndex="1">
+                    <Grid
+                        x:Name="HeaderContentArea"
+                        Height="480"
+                        VerticalAlignment="Top">
 
+                        <TextBlock
+                            x:Uid="Home_Title"
+                            Margin="0,40"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Style="{ThemeResource TitleTextBlockStyle}" />
+                        <StackPanel
+                            Grid.Row="1"
+                            Margin="0,40"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+                            <TextBlock
+                                x:Name="WelcomeMessage"
+                                Style="{ThemeResource TitleTextBlockStyle}"
+                                Text="{x:Bind ViewModel.Forum.WelcomeTitle, Mode=OneWay}" />
+                            <TextBlock
+                                x:Name="Description"
+                                Style="{ThemeResource SubtitleTextBlockStyle}"
+                                Text="{x:Bind ViewModel.Forum.Description, Mode=OneWay}" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <ListView x:Name="DiscussinsListView" Grid.Row="1">
+                    
+                </ListView>
             </Grid>
-
-
-        </Grid>
+        </ScrollViewer>
     </Grid>
-
 </Page>
