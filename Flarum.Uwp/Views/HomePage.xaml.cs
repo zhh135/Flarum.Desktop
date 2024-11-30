@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AsyncAwaitBestPractices;
 
 
 namespace Flarum.Uwp.Views
@@ -30,7 +31,14 @@ namespace Flarum.Uwp.Views
 
             ViewModel = new HomeViewModel();
             DataContext = ViewModel;
-            Debug.WriteLine("Hello!");
+            
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            ViewModel.GetDataAsync().SafeFireAndForget();
         }
     }
 }

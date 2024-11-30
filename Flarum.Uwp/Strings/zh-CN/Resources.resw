@@ -130,7 +130,7 @@
     <value>新建</value>
   </data>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>Flarent (Preview)</value>
+    <value>Flarent (预览)</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
     <value>一个第三方Flarum客户端</value>
@@ -140,5 +140,23 @@
   </data>
   <data name="Settings_Title.Text" xml:space="preserve">
     <value>设置</value>
+  </data>
+  <data name="Settings_General.Header" xml:space="preserve">
+    <value>通用</value>
+  </data>
+  <data name="Settings_Personalize.Header" xml:space="preserve">
+    <value>个性化</value>
+  </data>
+  <data name="Settings_About.Header" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Settings_About.Description" xml:space="preserve">
+    <value>关于此应用。</value>
+  </data>
+  <data name="Settings_General.Description" xml:space="preserve">
+    <value>在这里完成大部分设置。</value>
+  </data>
+  <data name="Settings_Personalize.Description" xml:space="preserve">
+    <value>自定义您的应用。</value>
   </data>
 </root>

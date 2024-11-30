@@ -24,7 +24,7 @@ namespace Flarum.Uwp.ViewModels
             flarumProvider = Locator.Instance.GetService<FlarumProvider>();
         }
 
-        public async void GetDataAsync()
+        public async Task GetDataAsync()
         {
             Forum = App.CurrentForum;
 

@@ -75,7 +75,7 @@ namespace Flarum.Uwp.Views
             dismissed = true;
 
             // Complete app setup operations here...
-            App.CurrentProvider.Option.Url = "https://discuss.flarum.org.cn";
+            App.CurrentProvider.Option.Url = "https://community.wvbtech.com";
             App.CurrentForum = await App.CurrentProvider.GetFlarumForumAsync();
 
             DismissExtendedSplash();
