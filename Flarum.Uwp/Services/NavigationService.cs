@@ -1,9 +1,9 @@
 using Flarum.Uwp.Contracts.Services;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Navigation;
 using System;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 using System.Diagnostics;
 
 namespace Flarum.Uwp.Services

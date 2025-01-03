@@ -6,13 +6,13 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace Flarum.Uwp.Controls.TemplateControls
 {
@@ -21,8 +21,8 @@ namespace Flarum.Uwp.Controls.TemplateControls
         private static DependencyProperty DiscussionProperty = DependencyProperty.Register(nameof(Discussion), typeof(FlarumDiscussion), typeof(DiscussionControl), new PropertyMetadata(new FlarumDiscussion()));
 
         public FlarumDiscussion Discussion {
-            get { return (FlarumDiscussion)GetValue(DiscussionProperty)}
-            set { SetValue(DiscussionProperty, value)} }
+            get { return (FlarumDiscussion)GetValue(DiscussionProperty); }
+            set { SetValue(DiscussionProperty, value); } }
 
         public DiscussionControl()
         {

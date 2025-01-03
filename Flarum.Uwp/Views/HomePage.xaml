@@ -31,7 +31,8 @@
                             Margin="0,40"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
-                            Style="{ThemeResource TitleTextBlockStyle}" />
+                            Style="{ThemeResource TitleTextBlockStyle}" 
+                            Foreground="White" />
                         <StackPanel
                             Grid.Row="1"
                             Margin="0,40"
@@ -41,11 +42,13 @@
                             <TextBlock
                                 x:Name="WelcomeMessage"
                                 Style="{ThemeResource TitleTextBlockStyle}"
-                                Text="{x:Bind ViewModel.Forum.WelcomeTitle, Mode=OneWay}" />
+                                Text="{x:Bind ViewModel.Forum.WelcomeTitle, Mode=OneWay}"
+                                Foreground="White" />
                             <TextBlock
                                 x:Name="Description"
                                 Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="{x:Bind ViewModel.Forum.Description, Mode=OneWay}" />
+                                Text="{x:Bind ViewModel.Forum.Description, Mode=OneWay}"
+                                Foreground="White" />
                         </StackPanel>
                     </Grid>
                 </Grid>

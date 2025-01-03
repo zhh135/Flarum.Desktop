@@ -1,16 +1,15 @@
-﻿using Microsoft.Toolkit.Uwp;
-using Microsoft.Toolkit.Uwp.UI.Controls;
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Controls;
 using RichTextControls.Generators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.System;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Documents;
+using Microsoft.Windows.System;
+using Microsoft.UI.Dispatching;
+using Microsoft.UI.Xaml.Documents;
 using LinkClickedEventArgs = RichTextControls.EventsArgs.LinkClickedEventArgs;
+using CommunityToolkit.WinUI;
 
 namespace RichTextControls
 {
@@ -43,10 +42,10 @@ namespace RichTextControls
                     Severity = InfoBarSeverity.Error,
                     Message = $"HTML转换失败，将显示源HTML\n{ex.Message}",
                     IsOpen = true,                    
-                    HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch,
+                    HorizontalAlignment = Microsoft.UI.Xaml.HorizontalAlignment.Stretch,
                 };
                 panel.Children.Add(infobar);
-                panel.Children.Add(new TextBlock() { Text = Html ,TextWrapping = Windows.UI.Xaml.TextWrapping.Wrap});
+                panel.Children.Add(new TextBlock() { Text = Html ,TextWrapping = Microsoft.UI.Xaml.TextWrapping.Wrap});
                 _rootElement.Child = panel;
             }
         }
@@ -94,7 +93,7 @@ namespace RichTextControls
         }        /// <summary>
                  /// Called when the render has a link we need to listen to.
                  /// </summary>
-        public void RegisterNewHyperLink(ImageEx newImagelink, string linkUrl, bool isHyperLink)
+        public void RegisterNewHyperLink(ImageEx.ImageEx newImagelink, string linkUrl, bool isHyperLink)
         {
             // Setup a listener for clicks.
             newImagelink.Tapped += NewImagelink_Tapped;
@@ -119,7 +118,7 @@ namespace RichTextControls
                     hyperlink.Click -= Hyperlink_Click;
                     hyperlink.Click += Hyperlink_Click;
                 }
-                else if (link is ImageEx image)
+                else if (link is ImageEx.ImageEx image)
                 {
                     image.Tapped -= NewImagelink_Tapped;
                     image.Tapped += NewImagelink_Tapped;
@@ -136,13 +135,13 @@ namespace RichTextControls
                 {
                     hyperlink.Click -= Hyperlink_Click;
                 }
-                else if (link is ImageEx image)
+                else if (link is ImageEx.ImageEx image)
                 {
                     image.Tapped -= NewImagelink_Tapped;
                 }
             }
         }
-        internal async void LinkHandled(string url, bool isHyperlink,ImageEx imageEx = null)
+        internal async void LinkHandled(string url, bool isHyperlink,ImageEx.ImageEx imageEx = null)
         {
             // Links that are nested within superscript elements cause the Click event to fire multiple times.
             // e.g. this markdown "[^bot](http://www.reddit.com/r/youtubefactsbot/wiki/index)"

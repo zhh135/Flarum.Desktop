@@ -13,6 +13,7 @@ namespace Flarum.Uwp.Helpers
     {
         public static void ExtendContentIntoTitleBar()
         {
+            // TODO 不再支持 Windows.UI.ViewManagement.ApplicationView。请改用 Microsoft.UI.Windowing.AppWindow。有关更多详细信息，请参阅 https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/windowing。
             var TitleBar = ApplicationView.GetForCurrentView().TitleBar;
             var CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
 

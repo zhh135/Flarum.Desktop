@@ -1,10 +1,6 @@
-﻿using AngleSharp.Css.Values;
-using AngleSharp.Dom;
-using AngleSharp.Dom.Html;
-using AngleSharp.Parser.Html;
+﻿using AngleSharp.Dom;
 using ColorCode.Compilation.Languages;
-using Microsoft.Toolkit.Uwp.UI.Controls;
-using Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render;
+
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
@@ -12,13 +8,16 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using Windows.UI;
+using Microsoft.UI.Text;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Microsoft.UI.Xaml.Shapes;
 using Windows.UI.Text;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Documents;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Shapes;
+using Microsoft.UI;
+using AngleSharp.Html.Parser;
+using AngleSharp.Html.Dom;
 
 namespace RichTextControls.Generators
 {
@@ -73,7 +72,7 @@ namespace RichTextControls.Generators
             if (_parser == null && _document == null)
                 throw new InvalidOperationException("No HTML parser was set. If this is a subclass you must instantiate the parent with `base()`.");
 
-            _document = _document ?? _parser.Parse(_html);
+            _document = _document ?? _parser.ParseDocument(_html);
 
             var panel = new StackPanel ();
 
@@ -447,7 +446,7 @@ namespace RichTextControls.Generators
                 IsClosable = false,
                 Title = "信息",
                 IsOpen = true,
-                HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Stretch,
+                HorizontalAlignment = Microsoft.UI.Xaml.HorizontalAlignment.Stretch,
             };
             if (node.Attributes["class"].Value.Contains("error") || node.Attributes["class"].Value.Contains("warning"))
             {
@@ -499,10 +498,10 @@ namespace RichTextControls.Generators
             return verticalStackPanel;
         }
 
-        private ImageEx GenerateImage(IHtmlImageElement node)
+        private ImageEx.ImageEx GenerateImage(IHtmlImageElement node)
         {
 
-            var image = new ImageEx()
+            var image = new ImageEx.ImageEx()
             {
                 Stretch = Stretch.UniformToFill,
                 Margin = new Thickness(0,12,0,0),
@@ -902,7 +901,7 @@ namespace RichTextControls.Generators
 
         private UIElement GenerateIframe(IHtmlInlineFrameElement node)
         {
-            var webView = new WebView(WebViewExecutionMode.SeparateThread);
+            var webView = new WebView2();
 
             if (!String.IsNullOrEmpty(node.ContentHtml))
             {
@@ -910,7 +909,7 @@ namespace RichTextControls.Generators
             }
             else if (Uri.TryCreate(node.Source, UriKind.RelativeOrAbsolute, out Uri sourceUrl))
             {
-                webView.Navigate(sourceUrl);
+                webView.NavigateToString(sourceUrl.OriginalString);
             }
 
             return webView;

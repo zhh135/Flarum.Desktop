@@ -5,13 +5,13 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
 
@@ -33,7 +33,7 @@ namespace Flarum.Uwp.Views
 
             // Listen for window resize events to reposition the extended splash screen image accordingly.
             // This ensures that the extended splash screen formats properly in response to window resizing.
-            Window.Current.SizeChanged += new WindowSizeChangedEventHandler(ExtendedSplash_OnResize);
+            App.Window.SizeChanged += new WindowSizeChangedEventHandler(ExtendedSplash_OnResize);
 
             splash = splashscreen;
             if (splash != null)
@@ -75,7 +75,7 @@ namespace Flarum.Uwp.Views
             dismissed = true;
 
             // Complete app setup operations here...
-            App.CurrentProvider.Option.Url = "https://community.wvbtech.com";
+            App.CurrentProvider.Option.Url = "https://discuss.flarum.org.cn";
             App.CurrentForum = await App.CurrentProvider.GetFlarumForumAsync();
 
             DismissExtendedSplash();
@@ -85,11 +85,11 @@ namespace Flarum.Uwp.Views
         {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 rootFrame = new Frame();
-                rootFrame.Content = new ShellPage(); Window.Current.Content = rootFrame;
+                rootFrame.Content = new ShellPage(); App.Window.Content = rootFrame;
             });
         }
 
-        void ExtendedSplash_OnResize(Object sender, WindowSizeChangedEventArgs e)
+        void ExtendedSplash_OnResize(Object sender, Microsoft.UI.Xaml.WindowSizeChangedEventArgs e)
         {
             // Safely update the extended splash screen image coordinates. This function will be executed when a user resizes the window.
             if (splash != null)

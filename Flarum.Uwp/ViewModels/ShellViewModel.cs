@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Flarum.Api.Bases;
 using System.Diagnostics;
 using Windows.ApplicationModel;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media;
 
 namespace Flarum.Uwp.ViewModels
 {
@@ -20,7 +20,7 @@ namespace Flarum.Uwp.ViewModels
 
         [ObservableProperty] private FlarumForum _currentForum;
         [ObservableProperty] private string _title;
-        [ObservableProperty] private Uri _iconUrl;
+        [ObservableProperty] private string _iconUrl;
 
         public ShellViewModel()
         {
@@ -31,11 +31,8 @@ namespace Flarum.Uwp.ViewModels
         {
             CurrentForum = App.CurrentForum;
 
-            if (CurrentForum.Title != null) Title = CurrentForum.Title;
-            else Title = Package.Current.DisplayName;
-            
-            if (CurrentForum.FaviconUrl != null) IconUrl = new Uri(CurrentForum.FaviconUrl);
-            else IconUrl = new Uri("ms-appx:///Assets/StoreLogo.png");
+            Title = CurrentForum.Title ?? Package.Current.DisplayName;
+            IconUrl = CurrentForum.FaviconUrl ?? "ms-appx:///Assets/StoreLogo.png";
             
         }
     }

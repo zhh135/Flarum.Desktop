@@ -6,7 +6,7 @@
     xmlns:helpers="using:Flarum.Uwp.Helpers"
     xmlns:local="using:Flarum.Uwp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
     mc:Ignorable="d">
 
@@ -25,13 +25,13 @@
                         <ColumnDefinition />
                         <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
                     </Grid.ColumnDefinitions>
-                    <BitmapIcon
+                    <controls:ImageEx
                         Grid.Column="1"
                         Width="16"
                         Height="16"
                         Margin="8,0,0,0"
                         HorizontalAlignment="Left"
-                        UriSource="{x:Bind ViewModel.IconUrl, Mode=OneWay}" />
+                        Source="{x:Bind ViewModel.IconUrl, Mode=OneWay}" />
                     <TextBlock
                         x:Name="AppTitleTextBlock"
                         Grid.Column="1"

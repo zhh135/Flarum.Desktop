@@ -1,12 +1,11 @@
-﻿using Microsoft.Toolkit.Uwp.UI.Controls;
-using Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render;
-using Microsoft.Toolkit.Uwp.UI.Helpers;
-using RichTextControls.Generators;
+﻿using RichTextControls.Generators;
 using System;
 using System.Collections.Generic;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Documents;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Documents;
+using CommunityToolkit.WinUI.UI.Controls;
+
 
 namespace RichTextControls
 {

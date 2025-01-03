@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RichTextControls (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "RichTextControls (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
