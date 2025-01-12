@@ -6,17 +6,26 @@
     xmlns:local="using:Flarum.Uwp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    muxc:BackdropMaterial.ApplyToRootOrPageBackground="True"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
     <Grid>
-        <Canvas>
-            <Image x:Name="extendedSplashImage" Source="ms-appx:Assets/SplashScreen.png" />
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image
+                x:Name="extendedSplashImage"
+                Grid.Row="0"
+                Width="496"
+                Height="240"
+                Source="ms-appx:Assets/SplashScreen.png" />
             <muxc:ProgressRing
                 Name="splashProgressRing"
-                HorizontalAlignment="Center"
+                Grid.Row="1"
                 IsActive="True" />
-        </Canvas>
+        </Grid>
+
     </Grid>
 </Page>

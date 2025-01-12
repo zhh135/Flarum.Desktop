@@ -18,8 +18,6 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using WinRT.Interop;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Flarum.Uwp
 {
@@ -28,13 +26,12 @@ namespace Flarum.Uwp
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        public static MainWindow Instance => _Instance ?? (_Instance = new MainWindow());
+        private static MainWindow _Instance;
 
         public MainWindow()
         {
-            this.InitializeComponent();
-
-            PageFrame.Navigate(typeof(SplashScreenPage));
-           
+            InitializeComponent();  
         }
 
 

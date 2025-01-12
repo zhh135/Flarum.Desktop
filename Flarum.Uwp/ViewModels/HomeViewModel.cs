@@ -31,7 +31,7 @@ namespace Flarum.Uwp.ViewModels
             var result = await flarumProvider.RequestAsync<GetAllDiscussionsRequest, GetAllDiscussionsResponse, ErrorResultBase, GetAllDiscussionsActualRequest>(new GetAllDiscussionsApi());
             
             Discussions = result.Match(
-                success => success?.Discussions?.Select(t=>(FlarumDiscussion)t.FlarumDiscussion.MapToFlarumDiscussionAsync().Result).ToList() ?? new List<FlarumDiscussion>(),
+                success => success?.Discussions?.Select(t=>(FlarumDiscussion)DiscussionDataToFlarumDiscussionMapper.MapToFlarumDiscussion(t.FlarumDiscussion)).ToList() ?? new List<FlarumDiscussion>(),
                 error=>new List<FlarumDiscussion>());
         }
     }

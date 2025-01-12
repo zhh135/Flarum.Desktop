@@ -19,6 +19,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Flarum.Uwp.Helpers;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -30,8 +31,6 @@ namespace Flarum.Uwp.Views
     public sealed partial class ShellPage : Page
     {
         private ShellViewModel ViewModel { get;}
-        private ApplicationViewTitleBar TitleBar { get; }
-        private CoreApplicationViewTitleBar CoreTitleBar { get; }
 
 
         public ShellPage()
@@ -43,7 +42,7 @@ namespace Flarum.Uwp.Views
 
             Loaded += ShellPage_Loaded;
 
-            App.Window.SetTitleBar(TitleDragArea);
+            App.Window.AppWindow.ExtendContentIntoTitleBar(TitleDragArea, App.Window);
 
             Locator.Instance.GetService<INavigationService>().RegisterFrameEvents(ContentFrame);
             Locator.Instance.GetService<INavigationViewService>().Initialize(NavView);

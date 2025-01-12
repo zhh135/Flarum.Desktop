@@ -19,9 +19,8 @@ using Windows.Foundation.Collections;
 using Flarum.Uwp;
 using Flarum.Provider;
 using Flarum.Provider.Models;
+using Flarum.Uwp.Views;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Flarum.Uwp
 {
@@ -46,11 +45,6 @@ namespace Flarum.Uwp
         /// <param name="args">Details about the launch request and process.</param>
         protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs e)
         {
-            // TODO This code defaults the app to a single instance app. If you need multi instance app, remove this part.
-            // Read: https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/applifecycle#single-instancing-in-applicationonlaunched
-            // If this is the first instance launched, then register it as the "main" instance.
-            // If this isn't the first instance launched, then "main" will already be registered,
-            // so retrieve it.
             var mainInstance = Microsoft.Windows.AppLifecycle.AppInstance.FindOrRegisterForKey("main");
             var activatedEventArgs = Microsoft.Windows.AppLifecycle.AppInstance.GetCurrent().GetActivatedEventArgs();
 
@@ -64,27 +58,24 @@ namespace Flarum.Uwp
                 return;
             }
 
-            // TODO This code handles app activation types. Add any other activation kinds you want to handle.
-            // Read: https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/applifecycle#file-type-association
-            if (activatedEventArgs.Kind == ExtendedActivationKind.File)
-            {
-                OnFileActivated(activatedEventArgs);
-            }
-
             // Initialize MainWindow here
-            Window = new MainWindow();
+            if (MainWindow.Instance is not null)
+            {
+                var Frame =  MainWindow.Instance.Content as Frame;
+                if (Frame is null)
+                {
+                    Frame = new Frame();
+                    MainWindow.Instance.Content = Frame;
+                    Frame.Navigate(typeof(SplashScreenPage));
+                }
+            }
+            
             Window.Activate();
             WindowHandle = WinRT.Interop.WindowNative.GetWindowHandle(Window);
         }
 
-        // TODO This is an example method for the case when app is activated through a file.
-        // Feel free to remove this if you do not need this.
-        public void OnFileActivated(AppActivationArguments activatedEventArgs)
-        {
 
-        }
-
-        public static MainWindow Window { get; private set; }
+        public static MainWindow Window =>MainWindow.Instance;
         public static FlarumProvider CurrentProvider => (_current ??  (_current = new FlarumProvider()));
         public static IntPtr WindowHandle { get; private set; }
         public static FlarumForum CurrentForum { get; internal set; }

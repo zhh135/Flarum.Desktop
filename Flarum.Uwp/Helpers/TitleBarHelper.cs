@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +14,9 @@ namespace Flarum.Uwp.Helpers
 {
     public static class TitleBarHelper
     {
-        public static void ExtendContentIntoTitleBar()
+        public static void ExtendContentIntoTitleBar(this AppWindow appWindow, UIElement AppTitleBar, Window Window)
         {
-            // TODO 不再支持 Windows.UI.ViewManagement.ApplicationView。请改用 Microsoft.UI.Windowing.AppWindow。有关更多详细信息，请参阅 https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/guides/windowing。
-            var TitleBar = ApplicationView.GetForCurrentView().TitleBar;
-            var CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            var TitleBar = appWindow.TitleBar;
 
             TitleBar.BackgroundColor = Colors.Transparent;
             TitleBar.ButtonBackgroundColor = Colors.Transparent;
@@ -23,7 +24,9 @@ namespace Flarum.Uwp.Helpers
             TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
             TitleBar.ButtonPressedBackgroundColor = Colors.Transparent;
 
-            CoreTitleBar.ExtendViewIntoTitleBar = true;
+            Window.ExtendsContentIntoTitleBar = true;
+            TitleBar.ExtendsContentIntoTitleBar = true;
+            Window.SetTitleBar(AppTitleBar);
         }
     }
 }

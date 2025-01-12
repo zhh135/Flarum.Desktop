@@ -10,7 +10,7 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media.Animation;
 using System;
 using System.Numerics;
-using Windows.UI;
+using Microsoft.UI;
 
 namespace Flarum.Uwp.Controls
 {
