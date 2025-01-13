@@ -5,12 +5,12 @@ using Microsoft.UI.Xaml.Controls;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using Flarum.Uwp.Contracts.Services;
-using Flarum.Uwp.Helpers;
+using Flarum.Contracts.Services;
+using Flarum.Helpers;
 using System.Reflection.Metadata.Ecma335;
 using System.Diagnostics;
 
-namespace Flarum.Uwp.Services;
+namespace Flarum.Services;
 
 public class NavigationViewService : INavigationViewService
 {

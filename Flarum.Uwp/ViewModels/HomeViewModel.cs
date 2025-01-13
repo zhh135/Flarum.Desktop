@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flarum.Uwp.ViewModels
+namespace Flarum.ViewModels
 {
     public partial class HomeViewModel : ObservableRecipient
     {

@@ -1,7 +1,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace Flarum.Uwp.Contracts.Services;
+namespace Flarum.Contracts.Services;
 
 public interface INavigationService
 {

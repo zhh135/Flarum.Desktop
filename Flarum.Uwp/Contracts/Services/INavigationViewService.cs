@@ -2,7 +2,7 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 
-namespace Flarum.Uwp.Contracts.Services;
+namespace Flarum.Contracts.Services;
 
 public interface INavigationViewService
 {

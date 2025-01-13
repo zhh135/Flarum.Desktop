@@ -1,4 +1,4 @@
-using Flarum.Uwp.Contracts.Services;
+using Flarum.Contracts.Services;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Navigation;
@@ -6,7 +6,7 @@ using System;
 using Microsoft.UI.Xaml;
 using System.Diagnostics;
 
-namespace Flarum.Uwp.Services
+namespace Flarum.Services
 {
     public class NavigationService : INavigationService
     {

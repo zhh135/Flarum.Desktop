@@ -1,9 +1,9 @@
 {
   "profiles": {
-    "Flarum.Uwp (Package)": {
+    "Flarum (Package)": {
       "commandName": "MsixPackage"
     },
-    "Flarum.Uwp (Unpackaged)": {
+    "Flarum (Unpackaged)": {
       "commandName": "Project"
     }
   }

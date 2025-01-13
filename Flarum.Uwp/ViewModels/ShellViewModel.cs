@@ -12,7 +12,7 @@ using System.Diagnostics;
 using Windows.ApplicationModel;
 using Microsoft.UI.Xaml.Media;
 
-namespace Flarum.Uwp.ViewModels
+namespace Flarum.ViewModels
 {
     public partial class ShellViewModel : ObservableRecipient
     { 

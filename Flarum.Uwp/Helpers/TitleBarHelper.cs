@@ -10,7 +10,7 @@ using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 
-namespace Flarum.Uwp.Helpers
+namespace Flarum.Helpers
 {
     public static class TitleBarHelper
     {

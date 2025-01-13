@@ -12,7 +12,7 @@ using System;
 using System.Numerics;
 using Microsoft.UI;
 
-namespace Flarum.Uwp.Controls
+namespace Flarum.Controls
 {
 
     public sealed partial class HomePageHeaderImage : UserControl

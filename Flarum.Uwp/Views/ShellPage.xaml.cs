@@ -1,6 +1,6 @@
 ﻿using AsyncAwaitBestPractices;
-using Flarum.Uwp.Contracts.Services;
-using Flarum.Uwp.ViewModels;
+using Flarum.Contracts.Services;
+using Flarum.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,11 +19,11 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using Flarum.Uwp.Helpers;
+using Flarum.Helpers;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace Flarum.Uwp.Views
+namespace Flarum.Views
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。

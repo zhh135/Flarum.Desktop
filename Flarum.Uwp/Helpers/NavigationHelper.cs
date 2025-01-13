@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using NavigationViewItem = Microsoft.UI.Xaml.Controls.NavigationViewItem;
 
-namespace Flarum.Uwp.Helpers
+namespace Flarum.Helpers
 {
     public class NavigationHelper
     {

@@ -1,11 +1,11 @@
-using Flarum.Uwp.Views;
+using Flarum.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.UI.Xaml.Controls;
-using Flarum.Uwp.Contracts.Services;
+using Flarum.Contracts.Services;
 
-namespace Flarum.Uwp.Services
+namespace Flarum.Services
 {
     public class PageService : IPageService
     {

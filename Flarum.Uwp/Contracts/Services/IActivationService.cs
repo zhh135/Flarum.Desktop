@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flarum.Uwp.Contracts.Services
+namespace Flarum.Contracts.Services
 {
     internal class IActivationService
     {

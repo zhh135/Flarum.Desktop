@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Data;
 
-namespace Flarum.Uwp.Helpers.Converters
+namespace Flarum.Helpers.Converters
 {
     public class StringToUriConverter : IValueConverter
     {

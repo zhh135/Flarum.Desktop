@@ -170,7 +170,4 @@
     <ProjectReference Include="..\Flarum.Sdk\Flarum.Provider\Flarum.Provider.csproj" />
     <ProjectReference Include="..\RichTextControls\RichTextControls.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HTMLParser\" />
-  </ItemGroup>
 </Project>

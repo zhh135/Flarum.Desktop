@@ -14,7 +14,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace Flarum.Uwp.Controls.TemplateControls
+namespace Flarum.Controls.TemplateControls
 {
     public sealed partial class DiscussionControl : UserControl
     {

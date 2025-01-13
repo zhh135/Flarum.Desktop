@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35111.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flarum.Uwp", "Flarum.Uwp\Flarum.Uwp.csproj", "{C5F61FAC-F48C-4704-ACDA-2BC292F1448C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flarum.Desktop", "Flarum.Uwp\Flarum.Desktop.csproj", "{C5F61FAC-F48C-4704-ACDA-2BC292F1448C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flarum.Provider", "Flarum.Sdk\Flarum.Provider\Flarum.Provider.csproj", "{15789734-74D1-4DF2-A11C-4A237E59F07A}"
 EndProject

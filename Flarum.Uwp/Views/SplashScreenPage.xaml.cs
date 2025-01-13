@@ -14,9 +14,9 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
-using Flarum.Uwp.Helpers;
+using Flarum.Helpers;
 
-namespace Flarum.Uwp.Views
+namespace Flarum.Views
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。

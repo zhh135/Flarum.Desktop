@@ -1,12 +1,12 @@
 ﻿using Flarum.Provider;
-using Flarum.Uwp.Contracts.Services;
-using Flarum.Uwp.Services;
+using Flarum.Contracts.Services;
+using Flarum.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 using System;
 
 
-namespace Flarum.Uwp;
+namespace Flarum;
 
 public class Locator
 {

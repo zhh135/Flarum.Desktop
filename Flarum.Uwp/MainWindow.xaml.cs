@@ -1,4 +1,4 @@
-using Flarum.Uwp.Views;
+using Flarum.Views;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -19,7 +19,7 @@ using Windows.Foundation.Collections;
 using WinRT.Interop;
 
 
-namespace Flarum.Uwp
+namespace Flarum
 {
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.

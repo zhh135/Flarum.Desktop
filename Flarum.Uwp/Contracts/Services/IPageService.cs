@@ -1,6 +1,6 @@
 using System;
 
-namespace Flarum.Uwp.Contracts.Services;
+namespace Flarum.Contracts.Services;
 
 public interface IPageService
 {

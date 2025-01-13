@@ -1,4 +1,4 @@
-﻿using Flarum.Uwp.ViewModels;
+﻿using Flarum.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,7 +17,7 @@ using Microsoft.UI.Xaml.Navigation;
 using AsyncAwaitBestPractices;
 
 
-namespace Flarum.Uwp.Views
+namespace Flarum.Views
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。

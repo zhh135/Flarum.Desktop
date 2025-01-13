@@ -16,13 +16,13 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Flarum.Uwp;
+using Flarum;
 using Flarum.Provider;
 using Flarum.Provider.Models;
-using Flarum.Uwp.Views;
+using Flarum.Views;
 
 
-namespace Flarum.Uwp
+namespace Flarum
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

@@ -2,7 +2,7 @@
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5" IgnorableNamespaces="uap mp">
   <Identity Name="c0d62756-1ff0-4634-94e4-22341b9783c8" Publisher="CN=zhh13" Version="1.0.0.0" />
   <Properties>
-    <DisplayName>Flarum.Uwp</DisplayName>
+    <DisplayName>Flarum</DisplayName>
     <PublisherDisplayName>zhh13</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

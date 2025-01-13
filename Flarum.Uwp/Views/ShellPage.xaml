@@ -1,11 +1,11 @@
 ﻿<Page
-    x:Class="Flarum.Uwp.Views.ShellPage"
+    x:Class="Flarum.Views.ShellPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls1="using:ImageEx"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:helpers="using:Flarum.Uwp.Helpers"
-    xmlns:local="using:Flarum.Uwp.Views"
+    xmlns:helpers="using:Flarum.Helpers"
+    xmlns:local="using:Flarum.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
