@@ -194,6 +194,8 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
     <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.3.1" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="9.0.0" />
+    <PackageReference Include="RichasyKernel.Abstractions" Version="0.0.1" />
+    <PackageReference Include="RichasyKernel.Core" Version="0.0.1" />
     <PackageReference Include="WinUICommunity.Components" Version="7.1.0" />
     <PackageReference Include="WinUIEx" Version="2.5.0" />
   </ItemGroup>
