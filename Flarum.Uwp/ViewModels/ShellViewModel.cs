@@ -11,10 +11,11 @@ using Flarum.Api.Bases;
 using System.Diagnostics;
 using Windows.ApplicationModel;
 using Microsoft.UI.Xaml.Media;
+using Flarum.Desktop.Contracts.ViewModels;
 
 namespace Flarum.ViewModels
 {
-    public partial class ShellViewModel : ObservableRecipient
+    public partial class ShellViewModel : ObservableRecipient, IViewModel
     { 
         private readonly FlarumProvider flarumProvider;
 

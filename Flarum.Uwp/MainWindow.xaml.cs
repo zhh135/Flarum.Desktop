@@ -1,3 +1,4 @@
+using Flarum.ViewModels;
 using Flarum.Views;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
@@ -21,17 +22,18 @@ using WinRT.Interop;
 
 namespace Flarum
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainWindow : Window
     {
         public static MainWindow Instance => _Instance ?? (_Instance = new MainWindow());
         private static MainWindow _Instance;
 
+        private ShellViewModel ViewModel { get; }
+
         public MainWindow()
         {
-            InitializeComponent();  
+            InitializeComponent();
+
+            ViewModel = Locator.Instance.GetService<ShellViewModel>(); 
         }
 
 

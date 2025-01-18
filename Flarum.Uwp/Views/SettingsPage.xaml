@@ -1,4 +1,4 @@
-﻿<Page
+﻿<local:SettingsPageBase
     x:Class="Flarum.Views.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,7 +8,7 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     xmlns:ui="using:CommunityToolkit.WinUI"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:community="using:WinUICommunity"
     mc:Ignorable="d">
 
     <Grid Margin="{ThemeResource ContentDefaultMargin}">
@@ -29,19 +29,19 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Orientation="Vertical">
-            <toolkit:SettingsCard
+            <community:SettingsCard
                 x:Name="GeneralCard"
                 x:Uid="Settings_General"
                 Margin="2"
                 HeaderIcon="{ui:FontIcon Glyph=&#xEC4E;}"
                 IsClickEnabled="True" />
-            <toolkit:SettingsCard
+            <community:SettingsCard
                 x:Name="PersonalizeCard"
                 x:Uid="Settings_Personalize"
                 Margin="2"
                 HeaderIcon="{ui:FontIcon Glyph=&#xE771;}"
                 IsClickEnabled="True" />
-            <toolkit:SettingsCard
+            <community:SettingsCard
                 x:Name="AboutCard"
                 x:Uid="Settings_About"
                 Margin="2"
@@ -49,4 +49,4 @@
                 IsClickEnabled="True" />
         </StackPanel>
     </Grid>
-</Page>
+</local:SettingsPageBase>

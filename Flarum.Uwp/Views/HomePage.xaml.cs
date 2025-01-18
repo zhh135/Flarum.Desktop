@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using AsyncAwaitBestPractices;
+using Flarum.Desktop.Views;
 
 
 namespace Flarum.Views
@@ -22,15 +23,11 @@ namespace Flarum.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class HomePage : Page
+    public sealed partial class HomePage : HomePageBase
     {
-        private readonly HomeViewModel ViewModel;
         public HomePage()
         {
-            this.InitializeComponent();
-
-            ViewModel = new HomeViewModel();
-            DataContext = ViewModel;
+            InitializeComponent();
             
         }
 
@@ -40,5 +37,10 @@ namespace Flarum.Views
 
             ViewModel.GetDataAsync().SafeFireAndForget();
         }
+    }
+
+    public partial class HomePageBase : AppPageBase<HomeViewModel>
+    {
+
     }
 }

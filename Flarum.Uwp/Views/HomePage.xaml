@@ -1,4 +1,4 @@
-﻿<Page
+﻿<local:HomePageBase
     x:Class="Flarum.Views.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,6 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Flarum.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Media"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
 
     <Grid>
@@ -25,14 +27,20 @@
                         x:Name="HeaderContentArea"
                         Height="480"
                         VerticalAlignment="Top">
-
+                        <Border x:Name="ShadowTarget1" />
                         <TextBlock
                             x:Uid="Home_Title"
                             Margin="0,40"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Style="{ThemeResource TitleTextBlockStyle}" 
-                            Foreground="White" />
+                            Foreground="White">
+                            <ui:Effects.Shadow>
+                                <ui:AttachedDropShadow CastTo="{x:Bind ShadowTarget1}"
+                                       CornerRadius="32"
+                                       Offset="4,4" />
+                            </ui:Effects.Shadow>
+                        </TextBlock>
                         <StackPanel
                             Grid.Row="1"
                             Margin="0,40"
@@ -53,9 +61,9 @@
                     </Grid>
                 </Grid>
                 <ListView x:Name="DiscussinsListView" Grid.Row="1">
-                    
+
                 </ListView>
             </Grid>
         </ScrollViewer>
     </Grid>
-</Page>
+</local:HomePageBase>

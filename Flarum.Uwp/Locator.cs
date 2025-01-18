@@ -4,6 +4,7 @@ using Flarum.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 using System;
+using Flarum.ViewModels;
 
 
 namespace Flarum;
@@ -29,10 +30,18 @@ public class Locator
     public Locator()
     {
         var _servicesCollection = new ServiceCollection();
+
+        // Services.
         _servicesCollection.AddSingleton<INavigationService, NavigationService>();
         _servicesCollection.AddSingleton<INavigationViewService, NavigationViewService>();
         _servicesCollection.AddSingleton<IPageService, PageService>();
+        // View Models.
+        _servicesCollection.AddSingleton<HomeViewModel>();
+        _servicesCollection.AddSingleton<ShellViewModel>();
+        _servicesCollection.AddSingleton<SettingsViewModel>();
+        // Flarum Provider.
         _servicesCollection.AddSingleton<FlarumProvider>();
+
         _services = _servicesCollection.BuildServiceProvider();
 
     }
