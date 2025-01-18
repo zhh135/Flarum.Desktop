@@ -8,7 +8,7 @@
 	<PublishProfile>win-$(Platform).pubxml</PublishProfile>
 	<RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
 	<UseRidGraph>true</UseRidGraph>
-	<Configurations>Debug;Release;NativeAot</Configurations>
+	<Configurations>Debug;Release;</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
