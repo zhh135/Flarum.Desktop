@@ -12,7 +12,8 @@
     mc:Ignorable="d" >
     <RichTextBlock>
         <Paragraph>
-            <Run x:Uid="ErrorDialog_Text"></Run>
+            <Run x:Uid="ErrorDialog_Text"/>
+            <Run Text="{x:Bind Meassage, Mode=OneWay}" />
         </Paragraph>
     </RichTextBlock>
 </ContentDialog>

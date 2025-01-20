@@ -10,20 +10,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
 
 namespace Flarum.Desktop.Dialogs
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ErrorDialog : ContentDialog
     {
+        private string Meassage { get; set; }
+
         public ErrorDialog()
         {
             this.InitializeComponent();
+        }
+
+        public async Task<ContentDialogResult> ShowDialogWithMeassageAsync(string Meassage)
+        {
+            this.Meassage = Meassage;
+            var Result = await this.ShowAsync();
+            return Result;
         }
     }
 }
