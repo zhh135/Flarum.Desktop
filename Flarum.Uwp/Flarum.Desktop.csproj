@@ -111,6 +111,12 @@
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\BackgroundImages\01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Dialogs\ErrorDialog.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
@@ -206,6 +212,8 @@
     <ProjectReference Include="..\RichTextControls\RichTextControls.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\BackgroundImages\" />
+    <Page Update="Dialogs\ErrorDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

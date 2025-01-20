@@ -20,6 +20,7 @@ using Flarum;
 using Flarum.Provider;
 using Flarum.Provider.Models;
 using Flarum.Views;
+using Flarum.Desktop.Dialogs;
 
 
 namespace Flarum
@@ -61,14 +62,16 @@ namespace Flarum
             // Initialize MainWindow here
             if (MainWindow.Instance is not null)
             {
-                var Frame =  MainWindow.Instance.Content as Frame;
-                if (Frame is null)
+                rootFrame =  MainWindow.Instance.Content as Frame;
+                if (rootFrame is null)
                 {
-                    Frame = new Frame();
-                    MainWindow.Instance.Content = Frame;
-                    Frame.Navigate(typeof(SplashScreenPage));
+                    rootFrame = new Frame();
+                    MainWindow.Instance.Content = rootFrame;
+                    rootFrame.Navigate(typeof(SplashScreenPage));
                 }
             }
+
+            
             
             Window.Activate();
             WindowHandle = WinRT.Interop.WindowNative.GetWindowHandle(Window);
@@ -81,5 +84,7 @@ namespace Flarum
         public static FlarumForum CurrentForum { get; internal set; }
 
         private static FlarumProvider _current;
+
+        public Frame rootFrame { get; private set; }
     }
 }

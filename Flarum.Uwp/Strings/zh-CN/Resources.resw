@@ -159,4 +159,13 @@
   <data name="Settings_Personalize.Description" xml:space="preserve">
     <value>自定义您的应用。</value>
   </data>
+  <data name="ErrorDialog.Title" xml:space="preserve">
+    <value>啊哦，出错了</value>
+  </data>
+  <data name="ErrorDialog.PrimaryButtonText" xml:space="preserve">
+    <value>知道了</value>
+  </data>
+  <data name="ErrorDialog_Text.Text" xml:space="preserve">
+    <value>你的 Flarum 出了点问题，以下是错误信息：</value>
+  </data>
 </root>

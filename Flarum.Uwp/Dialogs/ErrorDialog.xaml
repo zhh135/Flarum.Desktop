@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentDialog
+    x:Class="Flarum.Desktop.Dialogs.ErrorDialog"
+    x:Uid="ErrorDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="using:Flarum"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Flarum.Desktop.Dialogs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{ThemeResource DefaultContentDialogStyle}"
+    mc:Ignorable="d" >
+    <RichTextBlock>
+        <Paragraph>
+            <Run x:Uid="ErrorDialog_Text"></Run>
+        </Paragraph>
+    </RichTextBlock>
+</ContentDialog>
