@@ -26,6 +26,8 @@ namespace Flarum.Helpers
 
             Window.ExtendsContentIntoTitleBar = true;
             TitleBar.ExtendsContentIntoTitleBar = true;
+            TitleBar.IconShowOptions = IconShowOptions.HideIconAndSystemMenu;
+            TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
             Window.SetTitleBar(AppTitleBar);
         }
     }

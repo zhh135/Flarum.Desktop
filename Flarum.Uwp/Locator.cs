@@ -39,6 +39,7 @@ public class Locator
         _servicesCollection.AddSingleton<IPageService, PageService>();
         _servicesCollection.AddSingleton<IDialogService, DialogService>();
         _servicesCollection.AddSingleton<IFlarumService, FlarumService>();
+        _servicesCollection.AddSingleton<IShellService, ShellService>();
         // View Models.
         _servicesCollection.AddSingleton<HomeViewModel>();
         _servicesCollection.AddSingleton<ShellViewModel>();

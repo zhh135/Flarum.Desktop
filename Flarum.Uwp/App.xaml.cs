@@ -21,6 +21,7 @@ using Flarum.Provider;
 using Flarum.Provider.Models;
 using Flarum.Views;
 using Flarum.Desktop.Dialogs;
+using Flarum.Desktop.Contracts.Services;
 
 
 namespace Flarum
@@ -63,6 +64,7 @@ namespace Flarum
             if (MainWindow.Instance is not null)
             {
                 rootFrame =  MainWindow.Instance.Content as Frame;
+
                 if (rootFrame is null)
                 {
                     rootFrame = new Frame();
@@ -71,15 +73,15 @@ namespace Flarum
                 }
             }
 
-            
-            
+            Locator.Instance.GetService<IShellService>().RegisterXamlRoot(MainWindow.Instance.Content.XamlRoot);
+
             Window.Activate();
             WindowHandle = WinRT.Interop.WindowNative.GetWindowHandle(Window);
         }
 
 
-        public static MainWindow Window =>MainWindow.Instance;
-        public static FlarumProvider CurrentProvider => (_current ??  (_current = new FlarumProvider()));
+        public static MainWindow Window => MainWindow.Instance;
+        public static FlarumProvider CurrentProvider => (_current ??  (_current = Locator.Instance.GetService<FlarumProvider>()));
         public static IntPtr WindowHandle { get; private set; }
         public static FlarumForum CurrentForum { get; internal set; }
 

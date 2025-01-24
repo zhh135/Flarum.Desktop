@@ -17,12 +17,12 @@
 	<Configurations>Debug;Release;</Configurations>
   </PropertyGroup>
 
-	<PropertyGroup>
+	<!--<PropertyGroup>
 		<IsAotCompatible>true</IsAotCompatible>
 		<PublishAot>true</PublishAot>
 		<PlatformTargets>x86;x64;arm64</PlatformTargets>
 		<CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 	<PropertyGroup Condition="'$(Configuration)'=='NativeAot'">
 	  <IsAotCompatible>true</IsAotCompatible>

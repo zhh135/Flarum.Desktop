@@ -14,6 +14,9 @@
         <Paragraph>
             <Run x:Uid="ErrorDialog_Text"/>
             <Run Text="{x:Bind Meassage, Mode=OneWay}" />
+            <Run Text="Err Info:" />
+            <Run Text="{x:Bind Url, Mode=OneWay}"/>
         </Paragraph>
     </RichTextBlock>
 </ContentDialog>
+

@@ -21,6 +21,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Flarum.Helpers;
 using Flarum.Desktop.Views;
+using Flarum.Desktop.Contracts.Services;
 
 
 namespace Flarum.Views
@@ -37,6 +38,7 @@ namespace Flarum.Views
 
             Locator.Instance.GetService<INavigationService>().RegisterFrameEvents(ContentFrame);
             Locator.Instance.GetService<INavigationViewService>().Initialize(NavView);
+            // Locator.Instance.GetService<IShellService>().RegisterXamlRoot(XamlRoot);
         }
 
         private async void ShellPage_Loaded(object sender, RoutedEventArgs e)

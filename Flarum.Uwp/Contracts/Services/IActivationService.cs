@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flarum.Contracts.Services
 {
-    internal class IActivationService
+    public interface IActivationService
     {
     }
 }
