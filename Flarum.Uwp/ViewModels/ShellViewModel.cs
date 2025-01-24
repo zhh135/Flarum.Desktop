@@ -31,7 +31,7 @@ namespace Flarum.ViewModels
         public async Task GetDataAsync()
         {
             CurrentForum = App.CurrentForum;
-            IconUrl = CurrentForum.LogoUrl ?? "ms-appx:///Assets/StoreLogo.png";
+            IconUrl = CurrentForum.FaviconUrl ?? "ms-appx:///Assets/StoreLogo.png";
             Title = CurrentForum.Title ?? Package.Current.DisplayName;
             
             
