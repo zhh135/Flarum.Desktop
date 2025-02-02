@@ -36,7 +36,7 @@ namespace Flarum.Views
         {
             base.OnNavigatedTo(e);
 
-            App.CurrentProvider.Option.Url = "https://community.wvbtech.com";
+            App.CurrentProvider.Option.Url = "https://discuss.flarum.org.cn";
             App.CurrentForum = await Locator.Instance.GetService<FlarumProvider>().GetFlarumForumAsync();
 
             DismissExtendedSplash();
