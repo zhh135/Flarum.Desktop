@@ -44,9 +44,8 @@ namespace Flarum
 
         private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
         {
-            var dialog = (ErrorDialog)Locator.Instance.GetService<IDialogService>().GetDialog("ErrorDialog");
-            dialog.XamlRoot = Locator.Instance.GetService<IShellService>().GetCurrentXamlRoot();
-            dialog.ShowDialogWithMeassageAsync(e.Message.ToString());
+            var dialog = Locator.Instance.GetService<IDialogService>().GetDialog("ErrorDialog");
+            //dia
         }
 
         /// <summary>
