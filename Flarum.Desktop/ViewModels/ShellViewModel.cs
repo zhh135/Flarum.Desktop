@@ -17,7 +17,7 @@ namespace Flarum.ViewModels
 
         public ShellViewModel()
         {
-            flarumProvider = Locator.Instance.GetService<FlarumProvider>();
+            this.flarumProvider = Locator.Instance.GetService<FlarumProvider>();
         }
 
         public async Task GetDataAsync()

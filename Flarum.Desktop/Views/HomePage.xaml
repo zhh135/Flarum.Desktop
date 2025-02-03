@@ -62,7 +62,6 @@
                         </StackPanel>
                     </Grid>
                 </Grid>
-                
                 <ItemsView
                     x:Name="DiscussinsListView"
                     Grid.Row="1"

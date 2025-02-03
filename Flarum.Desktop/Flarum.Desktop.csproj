@@ -17,26 +17,33 @@
 	    <Configurations>Debug;Release;</Configurations>
     </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-	    <IsAotCompatible>true</IsAotCompatible>
-	    <PublishAot>true</PublishAot>
-	    <PlatformTargets>x86;x64;arm64</PlatformTargets>
-	    <CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
+	<PropertyGroup>
+		<IsAotCompatible>true</IsAotCompatible>
+		<PublishAot>true</PublishAot>
+		<PlatformTargets>x86;x64;arm64</PlatformTargets>
+		<CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
+	</PropertyGroup>
+
+	<PropertyGroup>
+	      <IsAotCompatible>true</IsAotCompatible>
+	      <PublishAot>true</PublishAot>
+	      <PlatformTargets>x86;x64;arm64</PlatformTargets>
+	      <CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
 	</PropertyGroup>
 	
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-        <OutputPath>bin\x86\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <NoWarn>;2008</NoWarn>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
 	
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NativeAot|x86'">
-        <OutputPath>bin\x86\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <NoWarn>;2008</NoWarn>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NativeAot|x86'">
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>

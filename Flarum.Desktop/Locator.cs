@@ -47,6 +47,7 @@ public class Locator
         _servicesCollection.AddSingleton<FlarumProvider>();
 
         _services = _servicesCollection.BuildServiceProvider();
+
     }
 
 }
