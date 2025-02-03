@@ -17,6 +17,7 @@ using Windows.UI.Core;
 using Flarum.Helpers;
 using Flarum.Desktop.Contracts.Services;
 using Flarum.Provider;
+using System.Diagnostics;
 
 namespace Flarum.Views
 {
@@ -35,10 +36,13 @@ namespace Flarum.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            /*
+            var provider = Locator.Instance.GetService<FlarumProvider>();
 
-            App.CurrentProvider.Option.Url = "https://discuss.flarum.org.cn";
-            App.CurrentForum = await Locator.Instance.GetService<FlarumProvider>().GetFlarumForumAsync();
-
+            provider.Option.Url = "https://discuss.flarum.org.cn";
+            App.CurrentForum = await provider.GetFlarumForumAsync();
+            Debug.WriteLine($"Load succeed! Url:{provider.Option.Url}");
+            */
             DismissExtendedSplash();
         }
 

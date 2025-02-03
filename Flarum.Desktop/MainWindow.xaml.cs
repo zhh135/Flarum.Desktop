@@ -11,6 +11,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -33,9 +34,10 @@ namespace Flarum
         {
             InitializeComponent();
 
-            ViewModel = Locator.Instance.GetService<ShellViewModel>(); 
+            ViewModel = Locator.Instance.GetService<ShellViewModel>();
+            Debug.WriteLine("Hello");
         }
 
-
+        
     }
 }
