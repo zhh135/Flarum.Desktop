@@ -1,34 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
-        <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-        <OutputType>WinExe</OutputType>
-        <DefaultLanguage>zh-CN</DefaultLanguage>
-        <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
-        <LangVersion>Latest</LangVersion>
-        <UseWinUI>true</UseWinUI>
-        <Platforms>x86;x64;arm64</Platforms>
-        <ApplicationManifest>app.manifest</ApplicationManifest>
-        <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
-	    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
-	    <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
-	    <UseRidGraph>true</UseRidGraph>
-	    <EnableDefaultPriItems>false</EnableDefaultPriItems>
-	    <Configurations>Debug;Release;</Configurations>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
+    <LangVersion>Latest</LangVersion>
+    <UseWinUI>true</UseWinUI>
+    <Platforms>x86;x64;arm64</Platforms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+	<PublishProfile>win-$(Platform).pubxml</PublishProfile>
+	<RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
+	<UseRidGraph>true</UseRidGraph>
+	<EnableDefaultPriItems>false</EnableDefaultPriItems>
+	<Configurations>Debug;Release;</Configurations>
+  </PropertyGroup>
 
-	<PropertyGroup>
+	<!--<PropertyGroup>
 		<IsAotCompatible>true</IsAotCompatible>
 		<PublishAot>true</PublishAot>
 		<PlatformTargets>x86;x64;arm64</PlatformTargets>
 		<CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
-	<PropertyGroup>
-	      <IsAotCompatible>true</IsAotCompatible>
-	      <PublishAot>true</PublishAot>
-	      <PlatformTargets>x86;x64;arm64</PlatformTargets>
-	      <CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
+	<PropertyGroup Condition="'$(Configuration)'=='NativeAot'">
+	  <IsAotCompatible>true</IsAotCompatible>
+	  <PublishAot>true</PublishAot>
+	  <PlatformTargets>x86;x64;arm64</PlatformTargets>
+	  <CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
 	</PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -110,9 +110,6 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
-  <ItemGroup>
-    <RdXmlFile Include="rd.xml" />
-  </ItemGroup>
   <ItemGroup>
     <Content Remove="Assets\BackgroundImages\01.png" />
   </ItemGroup>
