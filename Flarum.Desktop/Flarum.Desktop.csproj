@@ -187,8 +187,8 @@
     </PackageReference>
     <PackageReference Include="CommunityToolkit.WinUI.Helpers" Version="8.1.240916" />
     <PackageReference Include="CommunityToolkit.WinUI.Media" Version="8.1.240916" />
-    <PackageReference Include="Flarum.Api" Version="1.0.4" />
-    <PackageReference Include="Flarum.Provider" Version="1.0.4" />
+    <PackageReference Include="Flarum.Api" Version="1.0.5" />
+    <PackageReference Include="Flarum.Provider" Version="1.0.5" />
     <PackageReference Include="ImageEx">
       <Version>3.1.0</Version>
     </PackageReference>

@@ -16,6 +16,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
 using Flarum.Helpers;
 using Flarum.Desktop.Contracts.Services;
+using Flarum.Provider;
 
 namespace Flarum.Views
 {
@@ -35,8 +36,8 @@ namespace Flarum.Views
         {
             base.OnNavigatedTo(e);
 
-            App.CurrentProvider.Option.Url = "https://community.wvbtech.com";
-            App.CurrentForum = await Locator.Instance.GetService<IFlarumService>().GetForumInfoAsync();
+            App.CurrentProvider.Option.Url = "https://discuss.flarum.org.cn";
+            App.CurrentForum = await Locator.Instance.GetService<FlarumProvider>().GetFlarumForumAsync();
 
             DismissExtendedSplash();
         }

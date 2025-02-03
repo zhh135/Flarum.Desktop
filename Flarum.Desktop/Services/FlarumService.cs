@@ -27,17 +27,6 @@ namespace Flarum.Desktop.Services
             _shellService = shellService;
         }
 
-        public async Task<FlarumForum> GetForumInfoAsync()
-        {
-            var result = await _flarumProvider.RequestAsync<GetForumInfoRequest, GetForumInfoResponse, ErrorResultBase, GetForumInfoActualRequest>(new GetForumInfoApi());
-            return ForumDataToFlarumForumMapper.MapToFlarumForum( result.Match(
-                        success => success?.Data.flarumForum,
-                        error => {
-                            var dialog = (ErrorDialog)Locator.Instance.GetService<IDialogService>().GetDialog("ErrorDialog");
-                            dialog.XamlRoot = MainWindow.Instance.Content.XamlRoot;
-                            dialog.ShowDialogWithMeassageAsync(error.Message).SafeFireAndForget();
-                            return new FlarumForumDto();
-                        }));
-        }
+        
     }
 }

@@ -9,6 +9,6 @@ namespace Flarum.Desktop.Contracts.Services
 {
     public interface IFlarumService
     {
-        Task<FlarumForum> GetForumInfoAsync();
+        
     }
 }
