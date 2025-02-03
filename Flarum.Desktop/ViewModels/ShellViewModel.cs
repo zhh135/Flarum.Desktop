@@ -1,8 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Flarum.Provider;
 using Flarum.Provider.Models;
+using Flarum.Api.ApiContracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Flarum.Api.Bases;
+using System.Diagnostics;
 using Windows.ApplicationModel;
+using Microsoft.UI.Xaml.Media;
 using Flarum.Desktop.Contracts.ViewModels;
 
 namespace Flarum.ViewModels
@@ -25,6 +33,7 @@ namespace Flarum.ViewModels
             CurrentForum = App.CurrentForum;
             IconUrl = CurrentForum.FaviconUrl ?? "ms-appx:///Assets/StoreLogo.png";
             Title = CurrentForum.Title ?? Package.Current.DisplayName;
+            
             
         }
     }

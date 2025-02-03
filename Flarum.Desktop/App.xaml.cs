@@ -37,15 +37,7 @@ namespace Flarum
         /// </summary>
         public App()
         {
-            InitializeComponent();
-
-            UnhandledException += App_UnhandledException;
-        }
-
-        private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
-        {
-            var dialog = Locator.Instance.GetService<IDialogService>().GetDialog("ErrorDialog");
-            //dia
+            this.InitializeComponent();
         }
 
         /// <summary>
