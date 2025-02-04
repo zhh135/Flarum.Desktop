@@ -36,14 +36,14 @@
                 x:Name="HeroImage"
                 toolkit:VisualExtensions.NormalizedCenterPoint="0.5"
                 ImageOpened="OnImageOpened"
-                Source="/Assets/BackgroundImages/01.png"
+                Source="ms-appx:///Assets/BackgroundImages/01.png"
                 Stretch="UniformToFill" />
 
             <Image
                 x:Name="HeroOverlayImage"
                 toolkit:VisualExtensions.NormalizedCenterPoint="0.5"
                 Opacity="0.5"
-                Source="/Assets/BackgroundImages/01.png"
+                Source="ms-appx:///Assets/BackgroundImages/01.png"
                 Stretch="UniformToFill" />
 
         </Grid>
