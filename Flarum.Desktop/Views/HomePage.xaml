@@ -13,31 +13,34 @@
     mc:Ignorable="d">
     <local:HomePageBase.Resources>
         <DataTemplate x:Key="DiscussionItemTemplate" x:DataType="data:FlarumDiscussion">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="96" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="96" />
-                    <RowDefinition Height="40" />
-                </Grid.RowDefinitions>
-                <PersonPicture
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Margin="0" />
-                <Grid Grid.Column="1">
+            <ItemContainer Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                           BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                           BorderThickness="1">
+                <Grid Margin="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="96" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
-                        <RowDefinition Height="20" />
+                        <RowDefinition Height="72" />
+                        <RowDefinition Height="40" />
                     </Grid.RowDefinitions>
-                    <TextBlock
-                        x:Name="DiscussionTitle"
-                        Margin="4"
-                        Style="{ThemeResource TitleLargeTextBlockStyle}"
-                        Text="{x:Bind Title, Mode=OneWay}" />
+                    <PersonPicture
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0" />
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            x:Name="DiscussionTitle"
+                            Style="{ThemeResource SubtitleTextBlockStyle}"
+                            Text="{x:Bind Title, Mode=OneWay}" />
+                    </Grid>
                 </Grid>
-            </Grid>
+            </ItemContainer>
         </DataTemplate>
     </local:HomePageBase.Resources>
 
@@ -94,8 +97,13 @@
                 <ItemsView
                     x:Name="DiscussionsListView"
                     Grid.Row="1"
+                    Margin="36,16"
                     ItemTemplate="{StaticResource DiscussionItemTemplate}"
-                    ItemsSource="{x:Bind ViewModel, Mode=OneWay}" />
+                    ItemsSource="{x:Bind ViewModel.Discussions, Mode=OneWay}">
+                    <ItemsView.Layout>
+                        <UniformGridLayout MinColumnSpacing="8" MinRowSpacing="8" MinItemWidth="320"/>
+                    </ItemsView.Layout>
+                </ItemsView>
             </Grid>
         </ScrollViewer>
     </Grid>

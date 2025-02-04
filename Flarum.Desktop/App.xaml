@@ -10,6 +10,7 @@
 
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/NavigationView.xaml" />
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/_Thickness.xaml" />
+                <ResourceDictionary Source="ms-appx:///Resources/Styles/PersonPicture.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

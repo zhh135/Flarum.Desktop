@@ -18,7 +18,7 @@ namespace Flarum.ViewModels
     {
         private readonly FlarumProvider _flarumProvider;
 
-        [ObservableProperty] private ObservableCollection<FlarumDiscussion> _discussions;
+        [ObservableProperty] private List<FlarumDiscussion> _discussions;
         [ObservableProperty] private FlarumForum _forum;
 
         public HomeViewModel(FlarumProvider flarumProvider)
@@ -30,7 +30,7 @@ namespace Flarum.ViewModels
         {
             Forum = App.CurrentForum;
 
-            var discussions = _flarumProvider.GetAllFlarumDiscussionsAsync(0);
+            Discussions = await _flarumProvider.GetAllFlarumDiscussionsAsync(0);
         }
     }
 }
