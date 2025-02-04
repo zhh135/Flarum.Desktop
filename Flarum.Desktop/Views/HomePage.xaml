@@ -2,101 +2,120 @@
     x:Class="Flarum.Views.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:RichTextBlock="using:RichTextControls"
     xmlns:controls="using:Flarum.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:data="using:Flarum.Provider.Models"
+    xmlns:html="using:RichTextControls"
     xmlns:local="using:Flarum.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Media"
+    xmlns:behaviours=""
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
     <local:HomePageBase.Resources>
         <DataTemplate x:Key="DiscussionItemTemplate" x:DataType="data:FlarumDiscussion">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="96" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="96" />
-                    <RowDefinition Height="40" />
-                </Grid.RowDefinitions>
-                <PersonPicture
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Margin="0" />
-                <Grid Grid.Column="1">
+            <ItemContainer
+                Margin="0,16"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                MaxWidth="600">
+                <Grid Margin="8">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80" />
-                        <RowDefinition Height="20" />
+                        <RowDefinition Height="60" />
                     </Grid.RowDefinitions>
-                    <TextBlock
-                        x:Name="DiscussionTitle"
-                        Margin="4"
-                        Style="{ThemeResource TitleLargeTextBlockStyle}"
-                        Text="{x:Bind Title, Mode=OneWay}" />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <PersonPicture
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0" />
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="48" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            x:Name="DiscussionTitle"
+                            Margin="8"
+                            Style="{ThemeResource SubtitleTextBlockStyle}"
+                            Text="{x:Bind Title, Mode=OneWay}" />
+                        <TextBlock
+                            x:Name="DiscussionSubscription"
+                            Grid.Row="1"
+                            Margin="8"
+                            Text="{x:Bind Subscription, Mode=OneWay}" />
+                    </Grid>
                 </Grid>
-            </Grid>
+            </ItemContainer>
         </DataTemplate>
     </local:HomePageBase.Resources>
 
     <Grid>
-        <ScrollViewer>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="480" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <controls:HomePageHeaderImage
-                    Height="480"
-                    VerticalAlignment="Top"
-                    Canvas.ZIndex="0" />
-                <Grid Margin="{ThemeResource ContentDefaultMargin}" Canvas.ZIndex="1">
-                    <Grid
-                        x:Name="HeaderContentArea"
+        <RefreshContainer x:Name="RefreshContanier" RefreshRequested="{x:Bind ViewModel.GetDataAsync, Mode=OneWay}">
+            <ScrollViewer>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="480" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <controls:HomePageHeaderImage
                         Height="480"
-                        VerticalAlignment="Top">
-                        <Border x:Name="ShadowTarget1" />
-                        <TextBlock
-                            x:Uid="Home_Title"
-                            Margin="0,40"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Foreground="White"
-                            Style="{ThemeResource TitleTextBlockStyle}">
-                            <ui:Effects.Shadow>
-                                <ui:AttachedDropShadow
-                                    CastTo="{x:Bind ShadowTarget1}"
-                                    CornerRadius="32"
-                                    Offset="4,4" />
-                            </ui:Effects.Shadow>
-                        </TextBlock>
-                        <StackPanel
-                            Grid.Row="1"
-                            Margin="0,40"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Orientation="Vertical">
+                        VerticalAlignment="Top"
+                        Canvas.ZIndex="0" />
+                    <Grid Margin="{ThemeResource ContentDefaultMargin}" Canvas.ZIndex="1">
+                        <Grid
+                            x:Name="HeaderContentArea"
+                            Height="480"
+                            VerticalAlignment="Top">
+                            <Border x:Name="ShadowTarget1" />
                             <TextBlock
-                                x:Name="WelcomeMessage"
+                                x:Uid="Home_Title"
+                                Margin="0,40"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
                                 Foreground="White"
-                                Style="{ThemeResource TitleTextBlockStyle}"
-                                Text="{x:Bind ViewModel.Forum.WelcomeTitle, Mode=OneWay}" />
-                            <TextBlock
-                                x:Name="Description"
-                                Foreground="White"
-                                Style="{ThemeResource SubtitleTextBlockStyle}"
-                                Text="{x:Bind ViewModel.Forum.Description, Mode=OneWay}" />
-                        </StackPanel>
+                                Style="{ThemeResource TitleTextBlockStyle}">
+                                <ui:Effects.Shadow>
+                                    <ui:AttachedDropShadow
+                                        CastTo="{x:Bind ShadowTarget1}"
+                                        CornerRadius="32"
+                                        Offset="4,4" />
+                                </ui:Effects.Shadow>
+                            </TextBlock>
+                            <StackPanel
+                                Grid.Row="1"
+                                Margin="0,40"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Orientation="Vertical">
+                                <TextBlock
+                                    x:Name="WelcomeMessage"
+                                    Foreground="White"
+                                    Style="{ThemeResource TitleTextBlockStyle}"
+                                    Text="{x:Bind ViewModel.Forum.WelcomeTitle, Mode=OneWay}" />
+                                <TextBlock
+                                    x:Name="Description"
+                                    Foreground="White"
+                                    Style="{ThemeResource SubtitleTextBlockStyle}"
+                                    Text="{x:Bind ViewModel.Forum.Description, Mode=OneWay}" />
+                            </StackPanel>
+                        </Grid>
                     </Grid>
+                    <ItemsView
+                        x:Name="DiscussionsListView"
+                        Grid.Row="1"
+                        Margin="36,16"
+                        ItemTemplate="{StaticResource DiscussionItemTemplate}"
+                        ItemsSource="{x:Bind ViewModel.Discussions, Mode=OneWay}">
+                        <ItemsView.Layout>
+                            <UniformGridLayout ItemsStretch="Fill" MinItemHeight="200" MinRowSpacing="8" MinColumnSpacing="8"/>
+                        </ItemsView.Layout>
+                    </ItemsView>
                 </Grid>
-                <ItemsView
-                    x:Name="DiscussionsListView"
-                    Grid.Row="1"
-                    ItemTemplate="{StaticResource DiscussionItemTemplate}"
-                    ItemsSource="{x:Bind ViewModel, Mode=OneWay}" />
-            </Grid>
-        </ScrollViewer>
+            </ScrollViewer>
+        </RefreshContainer>
     </Grid>
 </local:HomePageBase>

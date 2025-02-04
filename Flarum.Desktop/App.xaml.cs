@@ -37,8 +37,15 @@ namespace Flarum
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            UnhandledException += App_UnhandledException;
         }
+
+        private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            
+        }
+
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
