@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Flarum.Api.ApiContracts;
 using Flarum.Api.Bases;
 using Flarum.Desktop.Contracts.ViewModels;
@@ -18,19 +19,42 @@ namespace Flarum.ViewModels
     {
         private readonly FlarumProvider _flarumProvider;
 
-        [ObservableProperty] private List<FlarumDiscussion> _discussions;
+        [ObservableProperty] private ObservableCollection<FlarumDiscussion> _discussions;
+        [ObservableProperty] private ObservableCollection<FlarumUser> _users; 
         [ObservableProperty] private FlarumForum _forum;
+        [ObservableProperty] private int _pageCounter;
 
         public HomeViewModel(FlarumProvider flarumProvider)
         {
             _flarumProvider = flarumProvider;
+
+            PageCounter = 0;
+            Discussions = new ();
         }
 
         public async Task GetDataAsync()
         {
             Forum = App.CurrentForum;
 
-            Discussions = await _flarumProvider.GetAllFlarumDiscussionsAsync(0);
+            var disc = await _flarumProvider.GetAllFlarumDiscussionsAsync(0);
+            
+            foreach (FlarumDiscussion ndisc in disc)
+            {
+                Discussions.Add(ndisc);
+            }
+        }
+
+        [RelayCommand]
+        private async Task GetNewDataAsync()
+        {
+            PageCounter += 1;
+
+            var newDiscussions = await _flarumProvider.GetAllFlarumDiscussionsAsync(PageCounter);
+
+            foreach (FlarumDiscussion newDiscussion in newDiscussions)
+            {
+                Discussions.Add(newDiscussion);
+            }
         }
     }
 }

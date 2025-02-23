@@ -7,6 +7,7 @@ using System;
 using Flarum.ViewModels;
 using Flarum.Desktop.Contracts.Services;
 using Flarum.Desktop.Services;
+using Flarum.Desktop.ViewModels;
 
 
 namespace Flarum;
@@ -43,6 +44,7 @@ public class Locator
         // View Models.
         _servicesCollection.AddSingleton<HomeViewModel>();
         _servicesCollection.AddSingleton<ShellViewModel>();
+        _servicesCollection.AddSingleton<DiscussionViewModel>();
         _servicesCollection.AddSingleton<SettingsViewModel>();
         // Flarum Provider.
         _servicesCollection.AddSingleton<FlarumProvider>();

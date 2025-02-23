@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.UI.Xaml.Controls;
 using Flarum.Contracts.Services;
+using Flarum.Desktop.Views;
 
 namespace Flarum.Services
 {
@@ -14,6 +15,7 @@ namespace Flarum.Services
         public PageService()
         {
             Configure<HomePage>();
+            Configure<DiscussionPage>();
             Configure<SettingsPage>();
         }
 

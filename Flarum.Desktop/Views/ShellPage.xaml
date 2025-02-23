@@ -22,20 +22,21 @@
                 <Grid x:Name="AppTitleBar" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
                     </Grid.ColumnDefinitions>
                     <controls1:ImageEx
                         Grid.Column="1"
                         Width="16"
                         Height="16"
-                        Margin="8,0,0,0"
+                        Margin="0"
                         HorizontalAlignment="Left"
                         Source="{x:Bind ViewModel.IconUrl, Mode=OneWay}" />
                     <TextBlock
                         x:Name="AppTitleTextBlock"
-                        Grid.Column="1"
-                        Margin="28,0,0,0"
+                        Grid.Column="2"
+                        Margin="16,0,8,0"
                         VerticalAlignment="Center"
                         Style="{StaticResource CaptionTextBlockStyle}"
                         Text="{x:Bind ViewModel.Title, Mode=OneWay}" />

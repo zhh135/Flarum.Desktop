@@ -1,7 +1,5 @@
-﻿using Flarum.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -14,38 +12,33 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Flarum.Desktop.ViewModels;
 using AsyncAwaitBestPractices;
-using Flarum.Desktop.Views;
-using Flarum.Contracts.Services;
+using Flarum.Provider.Models;
 
 
-namespace Flarum.Views
+namespace Flarum.Desktop.Views
 {
     /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HomePage : HomePageBase
+    public sealed partial class DiscussionPage : DiscussionPageBase
     {
-        public HomePage()
+        public DiscussionPage()
         {
             InitializeComponent();
-            
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
+            ViewModel.Id = int.Parse(((FlarumDiscussion) e.Parameter).Id);
             ViewModel.GetDataAsync().SafeFireAndForget();
-        }
-
-        private void DiscussionsListView_ItemInvoked(ItemsView sender, ItemsViewItemInvokedEventArgs args)
-        {
-            Locator.Instance.GetService<INavigationService>().NavigateTo("DiscussionPage", args.InvokedItem, true);
         }
     }
 
-    public partial class HomePageBase : AppPageBase<HomeViewModel>
+    public class DiscussionPageBase : AppPageBase<DiscussionViewModel>
     {
 
     }

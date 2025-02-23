@@ -168,4 +168,13 @@
   <data name="ErrorDialog_Text.Text" xml:space="preserve">
     <value>你的 Flarum 出了点问题，以下是错误信息：</value>
   </data>
+  <data name="Home_LoadBtn.Content" xml:space="preserve">
+    <value>加载更多</value>
+  </data>
+  <data name="Home_Default.Content" xml:space="preserve">
+    <value>最新回复</value>
+  </data>
+  <data name="Home_Hotness.Content" xml:space="preserve">
+    <value>热度</value>
+  </data>
 </root>

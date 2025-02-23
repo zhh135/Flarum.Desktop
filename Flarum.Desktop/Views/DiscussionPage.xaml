@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:DiscussionPageBase
+    x:Class="Flarum.Desktop.Views.DiscussionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Flarum.Desktop.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Margin="36,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock
+                Margin="0,36,0,8"
+                Style="{ThemeResource TitleTextBlockStyle}"
+                Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
+            <TextBlock
+                Margin="0,4,0,40"
+                Grid.Row="1"
+                Style="{ThemeResource SubtitleTextBlockStyle}"
+                Text="{x:Bind ViewModel.CreatedAt, Mode=OneWay}" />
+
+
+        </Grid>
+    </Grid>
+</local:DiscussionPageBase>
