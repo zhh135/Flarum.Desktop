@@ -13,6 +13,10 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using System.Threading.Tasks;
+using Flarum.Provider;
+using Windows.Graphics.Printing.PrintSupport;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace Flarum.Controls.TemplateControls
 {
@@ -24,9 +28,27 @@ namespace Flarum.Controls.TemplateControls
             get { return (FlarumDiscussion)GetValue(DiscussionProperty); }
             set { SetValue(DiscussionProperty, value); } }
 
+        private FlarumUser User { get; set; }
+        private BitmapImage Avatar { get; set; }
+
         public DiscussionControl()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            Loaded += DiscussionControl_Loaded;
+        }
+
+        private async void DiscussionControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            User = await Locator.Instance.GetService<FlarumProvider>().GetFlarumUserByIdAsync(int.Parse(Discussion.User.Data.Id));
+            if (User.AvatarUrl != null)
+            {
+                Avatar = new BitmapImage(new Uri(User.AvatarUrl));
+            }
+            else
+            {
+                Avatar = new BitmapImage();
+                AutorPicture.DisplayName = User.DisplayName;
+            }
         }
     }
 }

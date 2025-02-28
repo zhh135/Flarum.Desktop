@@ -7,24 +7,56 @@
     xmlns:local="using:Flarum.Desktop.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <Grid Margin="36,0">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <TextBlock
-                Margin="0,36,0,8"
-                Style="{ThemeResource TitleTextBlockStyle}"
-                Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
-            <TextBlock
-                Margin="0,4,0,40"
-                Grid.Row="1"
-                Style="{ThemeResource SubtitleTextBlockStyle}"
-                Text="{x:Bind ViewModel.CreatedAt, Mode=OneWay}" />
-
-
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid
+            x:Name="HeaderArea"
+            Grid.Row="0"
+            Background="{ThemeResource LayerOnMicaBaseAltFillColorDefaultBrush}">
+            <Border Margin="36,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        Margin="0,36,0,8"
+                        Style="{ThemeResource TitleTextBlockStyle}"
+                        Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
+                    <Grid Grid.Row="1" Margin="0,4,0,40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="Creator" Margin="8,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="24" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <PersonPicture Height="24" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Margin="2"
+                                    Foreground="{ThemeResource SystemColorControlAccentColor}"
+                                    Style="{ThemeResource CaptionTextBlockStyle}"
+                                    Text="{x:Bind ViewModel.Creator.Username, Mode=OneWay}" />
+                            </Grid>
+                        </Button>
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="8"
+                            HorizontalTextAlignment="Center"
+                            Style="{ThemeResource CaptionTextBlockStyle}"
+                            Text="{x:Bind ViewModel.CreatedAt, Mode=OneWay}" />
+                    </Grid>
+                </Grid>
+            </Border>
+            <Grid />
         </Grid>
+        <Grid x:Name="ContentArea" Grid.Row="1" />
     </Grid>
 </local:DiscussionPageBase>

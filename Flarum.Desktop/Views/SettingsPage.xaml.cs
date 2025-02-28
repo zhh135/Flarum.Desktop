@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Flarum.Desktop.Views;
 using Flarum.ViewModels;
+using Flarum.Contracts.Services;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -24,6 +25,8 @@ namespace Flarum.Views
         public SettingsPage()
         {
             this.InitializeComponent();
+            var navView = Locator.Instance.GetService<INavigationViewService>().NavView;
+            navView.SelectedItem = navView.SettingsItem;
         }
     }
 

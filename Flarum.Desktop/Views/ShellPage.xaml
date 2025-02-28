@@ -22,7 +22,7 @@
                 <Grid x:Name="AppTitleBar" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="LeftPaddingColumn" Width="0" />
-                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="16" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition x:Name="RightPaddingColumn" Width="0" />
                     </Grid.ColumnDefinitions>
@@ -45,14 +45,16 @@
             <muxc:NavigationView
                 x:Name="NavView"
                 x:Uid="NavView"
+                IsBackEnabled="{x:Bind ContentFrame.CanGoBack, Mode=OneWay}"
+                SelectionChanged="NavView_SelectionChanged"
                 Style="{ThemeResource LeftNavViewDefaultStyle}">
                 <muxc:NavigationView.PaneCustomContent>
-                    <muxc:Button 
-                        x:Name="CreateNewPost" 
-                        x:Uid="Shell_CreateNewPost" 
-                        Style="{ThemeResource AccentButtonStyle}"
+                    <muxc:Button
+                        x:Name="CreateNewPost"
+                        x:Uid="Shell_CreateNewPost"
+                        Margin="16,8"
                         HorizontalAlignment="Stretch"
-                        Margin="16,8"/>
+                        Style="{ThemeResource AccentButtonStyle}" />
                 </muxc:NavigationView.PaneCustomContent>
                 <muxc:NavigationView.MenuItems>
                     <muxc:NavigationViewItem
@@ -71,7 +73,7 @@
                 </muxc:NavigationView.MenuItems>
 
                 <muxc:NavigationView.FooterMenuItems>
-                    
+
                     <muxc:NavigationViewItem x:Name="UserItem" Content="未登录">
                         <muxc:NavigationViewItem.Icon>
                             <muxc:ImageIcon />

@@ -12,6 +12,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:CommunityToolkit.WinUI.Media"
     xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:templates="using:Flarum.Controls.TemplateControls"
     mc:Ignorable="d">
     <local:HomePageBase.Resources>
         <DataTemplate x:Key="DiscussionItemTemplate" x:DataType="data:FlarumDiscussion">
@@ -19,34 +20,7 @@
                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 BorderThickness="1">
-                <Grid Margin="16">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="72" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="72" />
-                    </Grid.RowDefinitions>
-                    <PersonPicture
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Margin="0" />
-                    <Grid Grid.Column="1" Margin="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40" />
-
-                        </Grid.RowDefinitions>
-                        <TextBlock
-                            x:Name="DiscussionTitle"
-                            Style="{ThemeResource SubtitleTextBlockStyle}"
-                            Text="{x:Bind Title, Mode=OneWay}" />
-                        <RichTextBlock:HtmlTextBlock
-                            x:Name="DiscussionSubscription"
-                            Grid.Row="1"
-                            Foreground="{ThemeResource CardStrokeColorDefaultBrush}"
-                            Html="{x:Bind Subscription, Mode=OneWay}" />
-                    </Grid>
-                </Grid>
+                <templates:DiscussionControl Discussion="{x:Bind }" />
             </ItemContainer>
         </DataTemplate>
     </local:HomePageBase.Resources>
@@ -93,7 +67,7 @@
                                 <TextBlock
                                     x:Name="WelcomeMessage"
                                     Foreground="White"
-                                    Style="{ThemeResource TitleTextBlockStyle}"
+                                    Style="{ThemeResource TitleLargeTextBlockStyle}"
                                     Text="{x:Bind ViewModel.Forum.WelcomeTitle, Mode=OneWay}" />
                                 <TextBlock
                                     x:Name="Description"

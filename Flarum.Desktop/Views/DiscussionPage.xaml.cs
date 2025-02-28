@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Flarum.Desktop.ViewModels;
 using AsyncAwaitBestPractices;
 using Flarum.Provider.Models;
+using Flarum.Contracts.Services;
 
 
 namespace Flarum.Desktop.Views
@@ -27,6 +28,7 @@ namespace Flarum.Desktop.Views
         public DiscussionPage()
         {
             InitializeComponent();
+            Locator.Instance.GetService<INavigationViewService>().NavView.SelectedItem = null;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

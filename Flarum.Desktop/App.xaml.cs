@@ -38,6 +38,13 @@ namespace Flarum
         public App()
         {
             this.InitializeComponent();
+            UnhandledException += App_UnhandledException;
+        }
+
+        private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            var dia = (ErrorDialog)Locator.Instance.GetService<IDialogService>().GetDialog("ErrorDialog");
+            dia.ShowDialogWithMeassageAsync(e.Message);
         }
 
         /// <summary>

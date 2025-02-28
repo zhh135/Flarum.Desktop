@@ -1,4 +1,5 @@
-﻿using Flarum.Provider;
+﻿using AsyncAwaitBestPractices;
+using Flarum.Provider;
 using Flarum.Provider.Models;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media.Imaging;
@@ -13,16 +14,24 @@ namespace Flarum.Desktop.Helpers.Converters
 {
     public class IdToImageSourceConverter : IValueConverter
     {
+        private FlarumUser user = new FlarumUser();
+
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var user = Locator.Instance.GetService<FlarumProvider>()
-                .GetFlarumUserByIdAsync(((string)value).ConvertToInt()).Result;
-            return new BitmapImage(new Uri(user.AvatarUrl));
+            var ret = GetUserAsync(int.Parse((string)value)).Result;
+            return new BitmapImage(new Uri(ret.AvatarUrl));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();
+        }
+
+        private async Task<FlarumUser> GetUserAsync(int id)
+        {
+            return await Locator.Instance.GetService<FlarumProvider>()
+                .GetFlarumUserByIdAsync(id);
+            
         }
     }
 }

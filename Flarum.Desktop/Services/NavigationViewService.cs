@@ -24,6 +24,8 @@ public class NavigationViewService : INavigationViewService
 
     public object? SettingsItem => _navigationView?.SettingsItem;
 
+    public NavigationView NavView { get => _navigationView; }
+
     public NavigationViewService(INavigationService navigationService, IPageService pageService)
     {
         _navigationService = navigationService;
@@ -34,14 +36,8 @@ public class NavigationViewService : INavigationViewService
     public void Initialize(NavigationView navigationView)
     {
         _navigationView = navigationView;
-/*
-    TODO WinUI3 应用中不存在标题栏中的默认后退按钮。
-   该工具已在 MainWindow.xaml.cs 文件中生成自定义后退按钮。
-   你可以随意编辑其位置、行为并改用自定义后退按钮。
-   读取: https://docs.microsoft.com/en-us/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/case-study-1#restoring-back-button-functionality
-*/
         _navigationView.BackRequested += OnBackRequested;
-        _navigationView.ItemInvoked += OnItemInvoked;
+        _navigationView.SelectionChanged += OnSelectionChanged;
     }
 
     public void UnregisterEvents()
@@ -49,7 +45,7 @@ public class NavigationViewService : INavigationViewService
         if (_navigationView != null)
         {
             _navigationView.BackRequested -= OnBackRequested;
-            _navigationView.ItemInvoked -= OnItemInvoked;
+            _navigationView.SelectionChanged -= OnSelectionChanged;
         }
     }
 
@@ -65,16 +61,16 @@ public class NavigationViewService : INavigationViewService
 
     private void OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) => _navigationService.GoBack();
 
-    private void OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+    private void OnSelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
-        if (args.IsSettingsInvoked)
+        if (args.IsSettingsSelected)
         {
             var abab =  _navigationService.NavigateTo("SettingsPage");
             if (abab) Debug.WriteLine("Settings Page is navigated!");
         }
         else
         {
-            var selectedItem = args.InvokedItemContainer as NavigationViewItem;
+            var selectedItem = args.SelectedItem as NavigationViewItem;
 
             if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
             {

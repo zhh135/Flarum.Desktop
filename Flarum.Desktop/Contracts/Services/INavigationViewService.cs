@@ -6,6 +6,7 @@ namespace Flarum.Contracts.Services;
 
 public interface INavigationViewService
 {
+    public NavigationView NavView { get;}
     IList<object>? MenuItems
     {
         get;

@@ -39,6 +39,7 @@ namespace Flarum.Views
             Locator.Instance.GetService<INavigationService>().RegisterFrameEvents(ContentFrame);
             Locator.Instance.GetService<INavigationViewService>().Initialize(NavView);
             // Locator.Instance.GetService<IShellService>().RegisterXamlRoot(XamlRoot);
+            NavView.SelectedItem = NavView.MenuItems[0];
         }
 
         private async void ShellPage_Loaded(object sender, RoutedEventArgs e)
@@ -52,8 +53,13 @@ namespace Flarum.Views
             base.OnNavigatedTo(e);    
             ViewModel.GetDataAsync().SafeFireAndForget();       
         }
+
+        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+
+        }
     }
-    
+
     public class ShellPageBase : AppPageBase<ShellViewModel>
     {
 
