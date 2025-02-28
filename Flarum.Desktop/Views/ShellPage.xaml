@@ -8,6 +8,7 @@
     xmlns:local="using:Flarum.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:wuc="using:WinUICommunity"
     mc:Ignorable="d">
 
     <Grid>
@@ -74,15 +75,21 @@
 
                 <muxc:NavigationView.FooterMenuItems>
 
-                    <muxc:NavigationViewItem x:Name="UserItem" Content="未登录">
-                        <muxc:NavigationViewItem.Icon>
-                            <muxc:ImageIcon />
-                        </muxc:NavigationViewItem.Icon>
-                    </muxc:NavigationViewItem>
+                    <muxc:NavigationViewItem
+                        x:Name="UserItem"
+                        Content="{x:Bind ViewModel.UserName, Mode=OneWay}"
+                        Icon="{x:Bind ViewModel.UserIcon, Mode=OneWay}"
+                        Tag="SignIn" />
                 </muxc:NavigationView.FooterMenuItems>
 
                 <Frame x:Name="ContentFrame" />
             </muxc:NavigationView>
+            <StackPanel
+                x:Name="Growl"
+                wuc:Growl.GrowlParent="True"
+                Orientation="Vertical"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </local:ShellPageBase>

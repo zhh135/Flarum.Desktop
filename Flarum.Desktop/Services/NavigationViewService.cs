@@ -9,6 +9,7 @@ using Flarum.Contracts.Services;
 using Flarum.Helpers;
 using System.Reflection.Metadata.Ecma335;
 using System.Diagnostics;
+using Flarum.Desktop.Contracts.Services;
 
 namespace Flarum.Services;
 
@@ -18,6 +19,8 @@ public class NavigationViewService : INavigationViewService
 
     private readonly IPageService _pageService;
 
+    private readonly IDialogService _dialogService;
+
     private NavigationView? _navigationView;
 
     public IList<object>? MenuItems => _navigationView?.MenuItems;
@@ -26,10 +29,11 @@ public class NavigationViewService : INavigationViewService
 
     public NavigationView NavView { get => _navigationView; }
 
-    public NavigationViewService(INavigationService navigationService, IPageService pageService)
+    public NavigationViewService(INavigationService navigationService, IPageService pageService, IDialogService dialogService)
     {
         _navigationService = navigationService;
         _pageService = pageService;
+        _dialogService = dialogService;
     }
 
     
@@ -67,6 +71,13 @@ public class NavigationViewService : INavigationViewService
         {
             var abab =  _navigationService.NavigateTo("SettingsPage");
             if (abab) Debug.WriteLine("Settings Page is navigated!");
+        }
+        else if(((NavigationViewItem)args.SelectedItem).Tag?.ToString() == "SignIn")
+        {
+            var dialog = _dialogService.GetDialog("SignInDialog");
+            dialog.XamlRoot = MainWindow.Instance.Content.XamlRoot;
+            //_ = dialog.ShowAsync();
+            throw new Exception("abab");
         }
         else
         {

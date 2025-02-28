@@ -46,6 +46,8 @@ public class Locator
         _servicesCollection.AddSingleton<ShellViewModel>();
         _servicesCollection.AddSingleton<DiscussionViewModel>();
         _servicesCollection.AddSingleton<SettingsViewModel>();
+
+        _servicesCollection.AddTransient<SignInViewModel>();
         // Flarum Provider.
         _servicesCollection.AddSingleton<FlarumProvider>();
 

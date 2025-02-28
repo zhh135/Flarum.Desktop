@@ -22,6 +22,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Flarum.Helpers;
 using Flarum.Desktop.Views;
 using Flarum.Desktop.Contracts.Services;
+using WinUICommunity;
 
 
 namespace Flarum.Views
@@ -51,7 +52,27 @@ namespace Flarum.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);    
-            ViewModel.GetDataAsync().SafeFireAndForget();       
+            ViewModel.GetDataAsync().SafeFireAndForget();
+            (App.Current as App).UnhandledException += ShellPage_UnhandledException;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            (App.Current as App).UnhandledException -= ShellPage_UnhandledException;
+        }
+
+        private void ShellPage_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            WinUICommunity.Growl.Error(
+                new GrowlInfo
+                {
+                    ShowDateTime = true,
+                    Title = "Ooops!",
+                    Message = e.Message,
+                    IsClosable = true
+                });
         }
 
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/NavigationView.xaml" />
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/_Thickness.xaml" />
                 <ResourceDictionary Source="ms-appx:///Resources/Styles/PersonPicture.xaml" />
+                <ResourceDictionary Source="ms-appx:///Resources/Styles/ContentDialog.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <converters:IdToImageSourceConverter x:Key="IdToImageSourceConverter" />

@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Dialogs\ErrorDialog.xaml" />
+    <None Remove="Resources\Styles\ContentDialog.xaml" />
     <None Remove="Resources\Styles\PersonPicture.xaml" />
     <None Remove="Views\DiscussionPage.xaml" />
   </ItemGroup>
@@ -214,6 +215,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RichTextControls\RichTextControls.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Resources\Styles\ContentDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\DiscussionPage.xaml">

@@ -1,4 +1,5 @@
 ﻿using Flarum.Desktop.Contracts.Services;
+using Flarum.Desktop.Contracts.ViewModels;
 using Flarum.Desktop.Dialogs;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -16,6 +17,7 @@ namespace Flarum.Desktop.Services
         public DialogService()
         {
             Configure<ErrorDialog>();
+            Configure<SignInDialog>();
         }
 
         public ContentDialog GetDialog(string key)
@@ -33,7 +35,7 @@ namespace Flarum.Desktop.Services
         }
 
         private void Configure<V>()
-            where V : ContentDialog
+            where V : class
         {
             lock (_dialogs)
             {
